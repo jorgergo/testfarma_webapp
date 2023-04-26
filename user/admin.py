@@ -6,15 +6,15 @@ from .models import User
 
 class CustomUserAdmin(UserAdmin):
     list_display = (
-        'username', 'email', 'first_name', 'last_name','is_staff',
+        'email', 'first_name', 'last_name','is_staff',
         )
 
     fieldsets = (
         (None, {
-            'fields': ('username', 'password')
+            'fields': ('email', 'password')
         }),
         ('Personal info', {
-            'fields': ('first_name', 'last_name', 'email')
+            'fields': ('first_name', 'last_name')
         }),
         ('Permissions', {
             'fields': (
@@ -30,10 +30,10 @@ class CustomUserAdmin(UserAdmin):
 
     add_fieldsets = (
         (None, {
-            'fields': ('username', 'password1', 'password2')
+            'fields': ('email', 'password1', 'password2')
         }),
         ('Personal info', {
-            'fields': ('first_name', 'last_name', 'email')
+            'fields': ('first_name', 'last_name')
         }),
         ('Permissions', {
             'fields': (
@@ -45,6 +45,9 @@ class CustomUserAdmin(UserAdmin):
             'fields': ('last_login', 'date_joined')
         }),
     )
+    
+    search_fields = ('email', 'first_name', 'last_name', 'is_staff')
+    ordering = ('email',)
 
 
 admin.site.register(User, CustomUserAdmin)
