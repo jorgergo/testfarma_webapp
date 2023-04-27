@@ -57,6 +57,33 @@ form {
     width: 100%;
 }
 
+.register-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;  
+    width: 100%;
+}
+
+.register-group p {
+    font-size: 18pt;
+}
+
+.register-btn {
+    transition: 0.3s;
+    background-color: #FACB0C;
+    width: 40%;
+}
+
+.register-btn:hover {
+    background-color: #d0a700;
+}
+
+a {
+    color: #d0a700;
+}
+
 @media screen and (max-width: 1180px) {
 
     
