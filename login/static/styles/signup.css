@@ -1,0 +1,97 @@
+body {
+    background-color: #FFF9EC;
+    height: 100%;
+}
+
+
+.logo {
+    width: 350px;
+    height: 65px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.form-group {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.next-btn {
+    transition: 0.3s;
+    background-color: #FACB0C;
+}
+
+.next-btn:hover {
+    background-color: #d0a700;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.register-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;  
+    width: 100%;
+}
+
+.register-group p {
+    font-size: 18pt;
+}
+
+.register-btn {
+    transition: 0.3s;
+    background-color: #FACB0C;
+    width: 40%;
+}
+
+.register-btn:hover {
+    background-color: #d0a700;
+}
+
+a {
+    color: #d0a700;
+}
+
+@media screen and (max-width: 1180px) {
+
+    form {
+        width: 70%;
+    }
+
+    .register-btn {
+        width: 70%;
+    }
+
+}

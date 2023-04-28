@@ -50,11 +50,17 @@
             <div class = "register-group">
 
                 <p>¿No tienes una cuenta?</p>
-                <button class="btn register-btn" onclick>Registrate</button>
+                <button class="btn register-btn" onclick="link_to_register()">Registrate</button>
 
             </div>
 
         </div>
+
+        <script>
+            function link_to_register(){
+                window.location.href = "{% url 'register' %}";
+            }
+        </script>
 
 </body>
 </html>
