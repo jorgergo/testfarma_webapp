@@ -1,0 +1,9 @@
+.vscode/
+login/__pycache__/
+login/migrations/
+
+testfarma/__pycache__
+
+
+user/__pycache__
+user/migrations/
