@@ -64,3 +64,62 @@ class UserCreationForm(UserCreationForm):
         )
         
         return user    
+
+
+class RegisterForm(forms.Form):
+    
+    name = forms.CharField(
+                label = "",
+                widget=forms.widgets.TextInput(attrs={
+                'class': 'name-field form-control',
+                'placeholder': 'Nombre'
+                
+                }))
+    
+    last_name = forms.CharField(
+                label = "",
+                widget=forms.widgets.TextInput(attrs={
+                'class': 'last-name-field form-control',
+                'placeholder': 'Apellido Paterno'
+                }))
+    
+    mom_last_name = forms.CharField(
+                label = "",
+                widget=forms.widgets.TextInput(attrs={
+                'class': 'mom-last-name-field form-control',
+                'placeholder': 'Apellido Materno'
+                
+                }))
+    
+    birth_date = forms.DateField(
+                label = "",
+                widget=forms.widgets.DateInput(attrs={
+                'class': 'birth-date-field form-control',
+                'placeholder': 'Fecha de Nacimiento'
+                }))
+    
+    gender = forms.ChoiceField( required = True,
+                               label = "",
+                                choices=(("","Me identifico con..."),("MaleG", "Maculino"), ("FemaleG", "Femenino")),
+                                error_messages={
+                                    "required": "No puede estar vacío",
+                                },
+                                
+                                widget = forms.Select(attrs = {
+                                    "class": "form-control"
+                                    }
+                                ))
+    
+    user_type = forms.ChoiceField( required = True,
+                                  label = "",
+                                choices=(("","Soy un..."),("DoctorT", "Doctor"), ("UserT", "Paciente")),
+                                error_messages={
+                                    "required": "No puede estar vacío",
+                                },
+                                
+                                widget = forms.Select(attrs = {
+                                    "class": "form-control"
+                                    }
+                                ))
+    
+    

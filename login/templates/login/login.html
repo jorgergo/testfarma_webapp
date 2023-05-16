@@ -63,7 +63,7 @@
               <div class="col col-md-6 register-btn-container">
                 <button
                   class="btn btn-primary register-btn"
-                  onclick="link_to_register()"
+                  onclick="link_to_view()"
                 >
                   Registrate
                 </button>
@@ -86,7 +86,7 @@
     </div>
 
     <script>
-      function link_to_register() {
+      function link_to_view() {
         window.location.href = "{% url 'register' %}";
       }
     </script>

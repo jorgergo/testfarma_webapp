@@ -28,13 +28,21 @@
     </div>
 
     <div class="login-form">
-      <h1>Inicio de Sesión</h1>
+      <h1>Cuentanos sobre ti</h1>
 
       <form method="POST">
         {% csrf_token %}
-        <div class="form-group">{{ form.email }}</div>
+        <div class="form-group">{{ form.name|as_crispy_field }}</div>
 
-        <div class="form-group">{{ form.password }}</div>
+        <div class="form-group">{{ form.last_name|as_crispy_field }}</div>
+
+        <div class="form-group">{{ form.mom_last_name|as_crispy_field }}</div>
+
+        <div class="form-group">{{ form.birth_date|as_crispy_field }}</div>
+
+        <div class="form-group">{{ form.gender|as_crispy_field }}</div>
+
+        <div class="form-group">{{ form.user_type|as_crispy_field }}</div>
 
         <div class="btn-group">
           <button class="btn next-btn" type="submit">Siguiente</button>
@@ -43,11 +51,17 @@
 
       <div class="register-group">
         <p>¿Ya tienes una cuenta?</p>
-        <button class="btn register-btn" onclick="return_to_view()">
+        <button class="btn register-btn" onclick="link_to_view()">
           Iniciar Sesion
         </button>
       </div>
     </div>
+
+    <script>
+      function link_to_view() {
+        window.location.href = "{% url 'login' %}";
+      }
+    </script>
   </body>
 </html>
 

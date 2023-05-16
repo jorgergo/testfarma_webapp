@@ -46,27 +46,32 @@ def log_in(request):
     return render(request, "login/login.html", context)
 
 
-def register(request): 
+def register(request):
+    
+    form = RegisterForm()
+    context = {
+        "form": form
+    }
 
     if request.method == "POST":
             
-            form = RegisterForm(request.POST)
-            
-            if form.is_valid():
+        form = RegisterForm(request.POST)
+
+        if form.is_valid():
                 
-                user = User.objects.create_user(
-                    email = request.POST["email"],
-                    password = request.POST["password"]
-                )
-                
-                user.save()
-                
-                messages.success(request, f"Registro exitoso")
-                
-                return redirect("login")
-            
-            else:
-                messages.error(request, "No se pudo registrar el usuario")
+            user = User.objects.create_user(
+                email = request.POST["email"],
+                password = request.POST["password"]
+            )
+
+            user.save()
+
+            messages.success(request, "Registro exitoso")
+
+            return redirect("login")
+
+        else:
+            messages.error(request, "No se pudo registrar el usuario")
 
 
-    return render(request, "signup/signup.html")
+    return render(request, "signup/signup.html", context)
