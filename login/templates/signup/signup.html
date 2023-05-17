@@ -22,7 +22,7 @@
       <div class="container">
         <div class="container light-background">
           <div class="row">
-            <div class="col col-md-12 left-title"><h1>Soy un...</h1></div>
+            <div class="col col-md-12 left-title"><h1><strong>Soy un...</strong></h1></div>
           </div>
           <div class="row small-light-background" style="margin-top: 15%;">
             <div class="col col-md-6 left-subtitle">
@@ -43,19 +43,12 @@
       </div>
     </div>
     <div class="split right">
-      <div class="logo-container">
-        <img
-          class="logo"
-          src="{% static 'assets/images/testfarma_logo.png' %}"
-          alt=""
-          srcset=""
-        />
-      </div>
+
   
       <div class="login-form">
-        <h1>Cuentanos sobre ti</h1>
+        <p class="tittle-right">Cuentanos sobre ti</p>
   
-        <form method="POST">
+        <form method="POST" class="form-flex">
           {% csrf_token %}
           <div class="form-group">{{ form.name|as_crispy_field }}</div>
   
@@ -69,17 +62,11 @@
   
           <div class="form-group">{{ form.user_type|as_crispy_field }}</div>
   
-          <div class="btn-group">
-            <button class="btn next-btn" type="submit">Siguiente</button>
+          <div class="btn-sig">
+            <button class="next-btn" type="submit">Siguiente</button>
           </div>
         </form>
-  
-        <div class="register-group">
-          <p>¿Ya tienes una cuenta?</p>
-          <button class="btn register-btn" onclick="link_to_view()">
-            Iniciar Sesion
-          </button>
-        </div>
+
       </div>
     </div>
 
