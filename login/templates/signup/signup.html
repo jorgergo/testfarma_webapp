@@ -18,44 +18,71 @@
     <title>Registro de Usuarios</title>
   </head>
   <body>
-    <div class="logo-container">
-      <img
-        class="logo"
-        src="{% static 'assets/images/testfarma_logo.png' %}"
-        alt=""
-        srcset=""
-      />
-    </div>
-
-    <div class="login-form">
-      <h1>Cuentanos sobre ti</h1>
-
-      <form method="POST">
-        {% csrf_token %}
-        <div class="form-group">{{ form.name|as_crispy_field }}</div>
-
-        <div class="form-group">{{ form.last_name|as_crispy_field }}</div>
-
-        <div class="form-group">{{ form.mom_last_name|as_crispy_field }}</div>
-
-        <div class="form-group">{{ form.birth_date|as_crispy_field }}</div>
-
-        <div class="form-group">{{ form.gender|as_crispy_field }}</div>
-
-        <div class="form-group">{{ form.user_type|as_crispy_field }}</div>
-
-        <div class="btn-group">
-          <button class="btn next-btn" type="submit">Siguiente</button>
+    <div class="split left">
+      <div class="container">
+        <div class="container light-background">
+          <div class="row">
+            <div class="col col-md-12 left-title"><h1>Soy un...</h1></div>
+          </div>
+          <div class="row small-light-background" style="margin-top: 15%;">
+            <div class="col col-md-6 left-subtitle">
+              <h1>Doctor</h1>
+            </div>
+            <div class="col col-md-6">
+              <img class="img-doctor" src="{% static 'assets/images/doctor.png' %}" alt="doctor" />
+            </div>
+          </div>
+          <div class="row small-light-background">
+            <div class="col col-md-6 left-subtitle">
+              <h1>Paciente</h1>
+          </div>
+          <div class="col col-md-6">
+            <img class="img-paciente" src="{% static 'assets/images/paciente.png' %}" alt="patient" />
+          </div>
         </div>
-      </form>
-
-      <div class="register-group">
-        <p>¿Ya tienes una cuenta?</p>
-        <button class="btn register-btn" onclick="link_to_view()">
-          Iniciar Sesion
-        </button>
       </div>
     </div>
+    <div class="split right">
+      <div class="logo-container">
+        <img
+          class="logo"
+          src="{% static 'assets/images/testfarma_logo.png' %}"
+          alt=""
+          srcset=""
+        />
+      </div>
+  
+      <div class="login-form">
+        <h1>Cuentanos sobre ti</h1>
+  
+        <form method="POST">
+          {% csrf_token %}
+          <div class="form-group">{{ form.name|as_crispy_field }}</div>
+  
+          <div class="form-group">{{ form.last_name|as_crispy_field }}</div>
+  
+          <div class="form-group">{{ form.mom_last_name|as_crispy_field }}</div>
+  
+          <div class="form-group">{{ form.birth_date|as_crispy_field }}</div>
+  
+          <div class="form-group">{{ form.gender|as_crispy_field }}</div>
+  
+          <div class="form-group">{{ form.user_type|as_crispy_field }}</div>
+  
+          <div class="btn-group">
+            <button class="btn next-btn" type="submit">Siguiente</button>
+          </div>
+        </form>
+  
+        <div class="register-group">
+          <p>¿Ya tienes una cuenta?</p>
+          <button class="btn register-btn" onclick="link_to_view()">
+            Iniciar Sesion
+          </button>
+        </div>
+      </div>
+    </div>
+
 
     <script>
       function link_to_view() {

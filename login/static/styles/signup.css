@@ -1,6 +1,84 @@
-body {
-  background-color: #fff9ec;
+.split {
   height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.left {
+  left: 0;
+  background-color: #facb0c;
+}
+
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin-top: 15%;
+}
+
+.login-img {
+  border-radius: 10%;
+}
+
+.welcome-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.right {
+  right: 0;
+  background-color: #fff9ec;
+}
+
+.light-background {
+  background-color: #fff9ec;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 80%;
+}
+
+
+.small-light-background {
+  width: 90%;
+  height: 20%;
+  box-shadow: 12px 12px 2px 1px #faca0c4e;
+  border-radius: 10px;
+  margin-top: 20%;
+  margin-bottom: 20%;
+  margin-left: 5%;
+  border-width: 5px;
+  border:1px solid #E6E6E6;
+  transition: transform 0.3s ease;
+}
+
+.small-light-background:hover {
+  background-color: #f5e9ce;
+  transform: translate(0, -5px);
+}
+
+.left-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10%;
+}
+
+.left-subtitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  border-color: red;
 }
 
 .logo {
