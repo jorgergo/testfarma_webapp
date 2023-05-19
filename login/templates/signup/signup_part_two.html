@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=4, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Hello world 2
+
+    <button class="btn btn-primary">Registrarse</button>
+    <button class="btn btn-primary" onclick="link_to_view()">Regresar</button>
+
+    <script>
+        function link_to_view() {
+          window.location.href = "{% url 'register' %}";
+        }
+    </script>
+
+</body>
+</html>

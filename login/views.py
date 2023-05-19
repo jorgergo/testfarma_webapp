@@ -75,3 +75,7 @@ def register(request):
 
 
     return render(request, "signup/signup.html", context)
+
+def register_part_two(request):
+    
+    return render(request, "signup/signup_part_two.html")
