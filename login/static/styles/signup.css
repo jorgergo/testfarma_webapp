@@ -118,7 +118,6 @@
   flex-direction: column;
   margin-bottom: 1rem;
   width: 100%;
-  height: 100%;
 }
 
 .from-flex {
@@ -133,7 +132,7 @@ form {
 }
 
 .next-btn {
-  width: 50%;
+  width: 100%;
   height: 3rem;
   transition: 0.3s;
   background-color: #facb0c;

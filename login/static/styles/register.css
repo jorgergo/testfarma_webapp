@@ -1,0 +1,45 @@
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.left {
+  left: 0;
+  background-color: #facb0c;
+}
+
+.right {
+  right: 0;
+  background-color: #fff9ec;
+}
+
+.titulo-left {
+  color: #333;
+  font-weight: bold;
+  font-size: 4rem;
+}
+
+.titulo-left.top {
+  color: #333;
+  font-weight: bold;
+  font-size: 4rem;
+  padding-top: 35%;
+}
+
+.flex-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1180px) {
+  form {
+    width: 70%;
+  }
+}

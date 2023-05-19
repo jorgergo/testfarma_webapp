@@ -1,22 +1,37 @@
+{% extends "layouts/header.html"%}
+<!--  -->
+{% load crispy_forms_filters %}
+<!--  -->
+{% block content %}
+<!--  -->
+{% load static %}
+<!--  -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=4, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Hello world 2
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <button class="btn btn-primary">Registrarse</button>
-    <button class="btn btn-primary" onclick="link_to_view()">Regresar</button>
+    <link rel="stylesheet" href="{% static 'styles/register.css' %}" />
+
+    <title>Registro de Usuarios</title>
+  </head>
+  <body>
+    <div class="split left">
+      <div class="flex-left">
+        <p class="titulo-left top">Solo unos datos</p>
+        <p class="titulo-left">mas $user</p>
+      </div>
+    </div>
+    <div class="split right"></div>
 
     <script>
-        function link_to_view() {
-          window.location.href = "{% url 'register' %}";
-        }
+      function link_to_view() {
+        window.location.href = "{% url 'login' %}";
+      }
     </script>
-
-</body>
+  </body>
 </html>
+
+{% endblock %}
