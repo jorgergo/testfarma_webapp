@@ -20,6 +20,7 @@ class UserManager(BaseUserManager):
 
     def create_user(self, email, password=None, **extra_fields):
         """Create and save a regular User with the given email and password."""
+        extra_fields.setdefault('mom_last_name', '')
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
         return self._create_user(email, password, **extra_fields)
@@ -43,7 +44,9 @@ class User(AbstractUser):
     
     username = None
     email = models.EmailField(_('email address'), unique=True)
-    
+    mom_last_name = models.CharField(max_length=50)
+    birth_date = models.DateField(null=True, blank=True)
+    gender = models.CharField(max_length=1, choices=(('M', 'Masculino'), ('F', 'Femenino')), null=True, blank=True)    
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     

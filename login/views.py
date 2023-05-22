@@ -48,34 +48,40 @@ def log_in(request):
 
 def register(request):
     
-    form = RegisterForm()
+    form = CacheRegisterForm()
     context = {
         "form": form
     }
 
     if request.method == "POST":
             
-        form = RegisterForm(request.POST)
+        form = CacheRegisterForm(request.POST)
 
         if form.is_valid():
+            
+            data = form.cleaned_data
                 
-            user = User.objects.create_user(
-                email = request.POST["email"],
-                password = request.POST["password"]
-            )
-
-            user.save()
-
-            messages.success(request, "Registro exitoso")
-
-            return redirect("login")
-
-        else:
-            messages.error(request, "No se pudo registrar el usuario")
-
+            request.session["register_form"] = request.POST
+            
+            redirect("register_part_two")
 
     return render(request, "signup/signup.html", context)
 
 def register_part_two(request):
     
-    return render(request, "signup/signup_part_two.html")
+    form = UserCreationForm()
+    context = {
+        "form" : form
+    }
+    
+    if request.method == "POST":
+        
+        if form.is_valid():
+            
+            try:
+                form.save()
+                messages.success(request, "Registro exitoso, ya puedes iniciar sesión")
+            except Exception as e:
+                messages.error(request, f"No se pudo registrar el usuario -> {e}")
+        
+    return render(request, "signup/signup_part_two.html", context)

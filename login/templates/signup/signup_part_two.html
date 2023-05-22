@@ -18,13 +18,33 @@
     <title>Registro de Usuarios</title>
   </head>
   <body>
+
     <div class="split left">
       <div class="flex-left">
         <p class="titulo-left top">Solo unos datos</p>
         <p class="titulo-left">mas $user</p>
       </div>
     </div>
-    <div class="split right"></div>
+    <div class="split right">
+
+        <form method="POST" class="form-flex">
+            
+            {% csrf_token %}
+            <div class="form-group">{{ form.email|as_crispy_field }}</div>
+    
+            <div class="form-group">{{ form.password1|as_crispy_field }}</div>
+    
+            <div class="form-group">{{ form.password2|as_crispy_field }}</div>
+
+            <div class="btn-sig">
+              <button class="next-btn" type="submit">Crear mi Cuenta</button>
+            </div>
+          
+        </form>
+
+    </div>
+
+
 
     <script>
       function link_to_view() {
