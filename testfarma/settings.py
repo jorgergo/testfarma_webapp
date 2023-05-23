@@ -39,14 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'user',
     'login',
     
     'jquery',
     'crispy_forms',
     'crispy_bootstrap5',
     
-    
+    'user',
 ]
 
 AUTH_USER_MODEL = 'user.User'
@@ -56,6 +55,7 @@ AUTHENTICATION_BACKENDS = ['user.backends.EmailBackend']
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

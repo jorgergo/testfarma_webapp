@@ -5,6 +5,7 @@ from .models import User
 # Register your models here.
 
 class CustomUserAdmin(UserAdmin):
+    model = User
     list_display = (
         'email', 'first_name', 'last_name','is_staff',
         )
@@ -19,7 +20,7 @@ class CustomUserAdmin(UserAdmin):
         ('Permissions', {
             'fields': (
                 'is_active', 'is_staff', 'is_superuser',
-                'groups', 'user_permissions'
+                'groups', 'user_permissions', 'user_type',
                 )
         }),
         ('Important dates', {
@@ -38,7 +39,7 @@ class CustomUserAdmin(UserAdmin):
         ('Permissions', {
             'fields': (
                 'is_active', 'is_staff', 'is_superuser',
-                'groups', 'user_permissions',
+                'groups', 'user_permissions', 'user_type'
                 )
         }),
         ('Important dates', {

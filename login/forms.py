@@ -2,7 +2,8 @@ from typing import Any
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from user.models import User
-from django.contrib.auth.models import User
+from testfarma import settings
+
 from django.contrib.auth import authenticate
 
 
@@ -18,7 +19,69 @@ class LoginForm(forms.Form):
                 "placeholder": "Contraseña"}
             ))   
     
+class CacheRegisterForm(forms.Form):
+    
+    name = forms.CharField(
+                label = "",
+                widget=forms.widgets.TextInput(attrs={
+                'class': 'name-field form-control',
+                'placeholder': 'Nombre'
+                
+                }))
+    last_name = forms.CharField(
+                label = "",
+                widget=forms.widgets.TextInput(attrs={
+                'class': 'last-name-field form-control',
+                'placeholder': 'Apellido Paterno'
+                }))
+    
+    mom_last_name = forms.CharField(
+                label = "",
+                widget=forms.widgets.TextInput(attrs={
+                'class': 'mom-last-name-field form-control',
+                'placeholder': 'Apellido Materno'
+                
+                }))
+    
+    birth_date = forms.DateField(
+                label = "",
+                input_formats=['%d-%m-%Y', '%Y-%m-%d'],
+                widget=forms.widgets.DateInput(attrs={
+                    'class': 'birth-date-field form-control',
+                    'type' : 'date',
+                    'placeholder': 'Fecha de Nacimiento'
+                }))
+    
+    gender = forms.ChoiceField( required = True,
+                               label = "",
+                                choices=(("","Me identifico con..."),("M", "Maculino"), ("F", "Femenino")),
+                                error_messages={
+                                    "required": "No puede estar vacío",
+                                },
+                                
+                                widget = forms.Select(attrs = {
+                                    "class": "form-control"
+                                    }
+                                ))
+    
+    user_type = forms.ChoiceField( required = True,
+                                  label = "",
+                                choices=(("","Soy un..."),("DoctorT", "Doctor"), ("UserT", "Paciente")),
+                                error_messages={
+                                    "required": "No puede estar vacío",
+                                },
+                                
+                                widget = forms.Select(attrs = {
+                                    "class": "form-control"
+                                    }
+                                ))
+        
+    
 class UserCreationForm(UserCreationForm):
+
+    class Meta:
+        model = User
+        fields = ("name", "last_name", "mom_last_name", "birth_date", "gender", "user_type", "email", "password1", "password2")
     
     name = forms.CharField(
                 label = "",
@@ -51,7 +114,7 @@ class UserCreationForm(UserCreationForm):
     
     gender = forms.ChoiceField( required = True,
                                label = "",
-                                choices=(("","Me identifico con..."),("MaleG", "Maculino"), ("FemaleG", "Femenino")),
+                                choices=(("","Me identifico con..."),("M", "Maculino"), ("F", "Femenino")),
                                 error_messages={
                                     "required": "No puede estar vacío",
                                 },
@@ -116,12 +179,12 @@ class UserCreationForm(UserCreationForm):
             user = User.objects.create_user(
                 self.cleaned_data["email"],
                 self.cleaned_data["password1"],
-                self.cleaned_data["name"],
-                self.cleaned_data["last_name"],
-                self.cleaned_data["mom_last_name"],
-                self.cleaned_data["birth_date"],
-                self.cleaned_data["gender"],
-                self.cleaned_data["user_type"],
+                first_name = self.cleaned_data["name"],
+                last_name = self.cleaned_data["last_name"],
+                mom_last_name = self.cleaned_data["mom_last_name"],
+                birth_date = self.cleaned_data["birth_date"],
+                gender = self.cleaned_data["gender"],
+                user_type = self.cleaned_data["user_type"],
             )
             
             return user    

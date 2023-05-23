@@ -7,6 +7,7 @@ from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+import json
 
 # Create your views here.
 
@@ -56,32 +57,49 @@ def register(request):
     if request.method == "POST":
             
         form = CacheRegisterForm(request.POST)
+        print(form.is_valid())
 
         if form.is_valid():
             
-            data = form.cleaned_data
+            data = json.dumps(form.cleaned_data, default=str)
                 
-            request.session["register_form"] = request.POST
+            request.session["register_form_part_two"] = data
             
-            redirect("register_part_two")
+            return redirect("register_part_two")
 
     return render(request, "signup/signup.html", context)
 
 def register_part_two(request):
     
+    
+    data = json.loads(request.session["register_form_part_two"])
+    
     form = UserCreationForm()
+    
     context = {
         "form" : form
     }
     
     if request.method == "POST":
         
+        updated_request = request.POST.copy()
+        updated_request.update(data)
+        
+        form = UserCreationForm(updated_request)
+
         if form.is_valid():
             
+            data = form.cleaned_data
+            
             try:
+                
                 form.save()
-                messages.success(request, "Registro exitoso, ya puedes iniciar sesión")
+                messages.success(request, f"Usuario creado exitosamente")
+                print("USER CREATED SUSSCESFULLY")
+            
             except Exception as e:
-                messages.error(request, f"No se pudo registrar el usuario -> {e}")
+                messages.error(request, f"Error al crear usuario")
+                print(e)
+                
         
     return render(request, "signup/signup_part_two.html", context)
