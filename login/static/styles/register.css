@@ -38,6 +38,59 @@
   align-items: center;
 }
 
+.form-flex {
+  padding-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.form-group {
+  width: 75%;
+}
+
+.instructions {
+  width: 75%;
+  justify-self: left !important;
+}
+
+.parameters {
+  width: 75%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 5rem;
+  justify-self: left;
+}
+
+.btn-sig {
+  padding-top: 5rem;
+  width: 100%;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+}
+
+.next-btn {
+  border-color: transparent;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem;
+  background-color: #facb0c;
+  transition: all 0.1s;
+}
+
+.next-btn:hover {
+  background-color: #ffdc4e;
+  transition: all 0.1s;
+}
+
 @media screen and (max-width: 1180px) {
   form {
     width: 70%;

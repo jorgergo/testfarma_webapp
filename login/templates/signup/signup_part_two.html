@@ -18,7 +18,6 @@
     <title>Registro de Usuarios</title>
   </head>
   <body>
-
     <div class="split left">
       <div class="flex-left">
         <p class="titulo-left top">Solo unos datos</p>
@@ -26,25 +25,29 @@
       </div>
     </div>
     <div class="split right">
+      <form method="POST" class="form-flex">
+        {% csrf_token %}
+        <div class="form-group">{{ form.email|as_crispy_field }}</div>
 
-        <form method="POST" class="form-flex">
-            
-            {% csrf_token %}
-            <div class="form-group">{{ form.email|as_crispy_field }}</div>
-    
-            <div class="form-group">{{ form.password1|as_crispy_field }}</div>
-    
-            <div class="form-group">{{ form.password2|as_crispy_field }}</div>
-
-            <div class="btn-sig">
-              <button class="next-btn" type="submit">Crear mi Cuenta</button>
-            </div>
-          
-        </form>
-
+        <div class="form-group">{{ form.password1|as_crispy_field }}</div>
+        <p class="instructions">
+          Para una mejor seguridad tu contraseña debe tener:
+        </p>
+        <div class="parameters">
+          <ul class="list">
+            <li>8 Caracteres</li>
+            <li>Letras MAYUSCULAS</li>
+            <li>Letras minusculas</li>
+            <li>Simbolos Especiales (#$%&)</li>
+            <li>Digitos</li>
+          </ul>
+        </div>
+        <div class="form-group">{{ form.password2|as_crispy_field }}</div>
+      </form>
+      <div class="btn-sig">
+        <button class="next-btn" type="submit">Crear mi Cuenta</button>
+      </div>
     </div>
-
-
 
     <script>
       function link_to_view() {
