@@ -27,4 +27,5 @@ admin.site.index_title = "Portal de Administración TestFarma"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", include("login.urls")),
+    path("", include("dashboard.urls")),
 ]

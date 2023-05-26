@@ -46,7 +46,6 @@ def log_in(request):
     
     return render(request, "login/login.html", context)
 
-
 def register(request):
     
     form = CacheRegisterForm()
@@ -103,3 +102,4 @@ def register_part_two(request):
                 
         
     return render(request, "signup/signup_part_two.html", context)
+
