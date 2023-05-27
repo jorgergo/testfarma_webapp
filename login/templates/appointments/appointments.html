@@ -18,6 +18,42 @@
     <title>Agendar Estudio</title>
   </head>
   <body>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h1 class="modal-title fs-5 title" id="exampleModalLabel">
+              Detalles del Estudio
+            </h1>
+          </div>
+          <div class="modal-body border-0">
+            <p>Nombre del Estudio: nombre_studio</p>
+            <p>Dirección: direccion_laboratorio</p>
+            <p>Fecha: fecha</p>
+            <p>Hora: hora</p>
+          </div>
+          <div class="modal-footer border-0">
+            <button
+              type="button"
+              class="btn modal-left"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn modal-right">
+              Agendar Estudio
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container-fluid appointments h-100 align-items-center">
       <div class="row d-flex justify-content-around">
         <div class="col col-md-4 appointments">
@@ -57,7 +93,14 @@
                 placeholder="Hora"
               />
             </div>
-            <button type="submit" class="btn btn-left">Agendar</button>
+            <button
+              type="button"
+              class="btn btn-left"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Agendar
+            </button>
           </form>
         </div>
         <div class="col col-md-7 appointments">

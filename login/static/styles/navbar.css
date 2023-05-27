@@ -29,8 +29,8 @@ ul.navbar-nav {
   justify-content: flex-end;
 }
 
-.active {
-  background-color: #50505047;
+.active-page {
+  background-color: rgba(80, 80, 80, 0.112);
   border-radius: 5px;
   padding: 0.5rem 1.5rem !important;
   font-weight: bold;
