@@ -192,4 +192,7 @@ input {
   .col.appointments {
     margin-bottom: 1rem;
   }
+  .studies {
+    max-height: 30rem;
+  }
 }
