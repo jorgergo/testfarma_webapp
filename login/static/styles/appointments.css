@@ -24,6 +24,12 @@ body {
   border-radius: 10px;
 }
 
+.studies {
+  max-height: 33rem;
+  overflow-y: scroll;
+  border-radius: 10px;
+}
+
 .title {
   font-size: 2rem;
   font-weight: bold;
@@ -160,6 +166,10 @@ input {
 }
 
 .dates::-webkit-scrollbar {
+  display: none;
+}
+
+.studies::-webkit-scrollbar {
   display: none;
 }
 
