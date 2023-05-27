@@ -96,11 +96,16 @@ input {
 }
 
 .card {
+  border-radius: 10px;
+}
+
+.card-body {
   background-color: #fff9ec;
   border-color: #fff9ec;
   border-radius: 10px;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.1);
 }
 
 .dates::-webkit-scrollbar {
@@ -122,5 +127,8 @@ input {
   }
   .btn-right.small {
     display: block;
+  }
+  .col.appointments {
+    margin-bottom: 1rem;
   }
 }
