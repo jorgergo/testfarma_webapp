@@ -1,0 +1,44 @@
+a.navbar {
+  padding: 0;
+  height: 5rem;
+  min-width: 3rem;
+}
+
+.logo {
+  padding: 10px 0px 10px 10px;
+  margin: 0;
+  float: left;
+  max-width: 80%;
+  height: auto;
+}
+
+.nav-item {
+  margin: 0 3rem;
+  font-size: 1.5rem;
+}
+
+ul.navbar-nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.active {
+  background-color: #50505047;
+  border-radius: 5px;
+  padding: 0.5rem 1.5rem !important;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  a.navbar {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo {
+    max-width: 70%;
+  }
+}
