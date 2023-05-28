@@ -97,3 +97,9 @@ def register_part_two(request):
 
 def appointments(request):
     return render(request, "appointments/appointments.html")
+
+def profile(request):
+    return render(request, "profile/profile.html")
+
+def home(request):
+    return render(request, "login/home.html")
