@@ -9,17 +9,53 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'styles/appointments.css' %}" />
-    <title>Agendar Estudio</title>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'styles/home.css' %}" />
+  <title>Profile</title>
+</head>
+<body>
+    <!-- CAtegories Section Starts Here -->
+    <section class="categories"style="background-color:rgba(255, 249, 236, 1);">
+        <div class="container">
+            <h2 class="text-center">Bienvenido de nuevo $user !</h2>
+
+            <a href="category-foods.html">
+            <div class="box-3 float-container">
+                <img src="{% static 'assets/images/pablo.jpeg' %}" alt="Pizza" class="img-responsive img-curve">
+
+                <h2 class="cube-text">Pro tip #1</h2>
+                <h4 class="cube-text2">Learn more →</h4>
+            </div>
+            </a>
+
+            <a href="#">
+            <div class="box-3 float-container">
+                <img src="{% static 'assets/images/pablo.jpeg' %}" alt="Burger" class="img-responsive img-curve">
+
+                <h2 class="cube-text">pro tip #2</h2>
+                <h4 class="cube-text2">Learn more →</h4>
+            </div>
+            </a>
+
+            <a href="#">
+            <div class="box-3 float-container">
+                <img src="{% static 'assets/images/pablo.jpeg' %}" alt="Momo" class="img-responsive img-curve">
+
+                <h2 class="cube-text">pro tip #3</h2>
+                <h4 class="cube-text2">Learn more →</h4>
+            </div>
+            </a>
+
+            <div class="clearfix"></div>
+        </div>
+    </section>
+    <!-- Categories Section Ends Here -->
 
 </body>
-
+</html>
 
 {% endblock %}
