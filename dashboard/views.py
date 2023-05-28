@@ -7,7 +7,7 @@ from login.urls import *
 
 # Create your views here.
 
-def dashboard(request, user_id):
+def home(request, user_id):
     
     context = {
         "user": user_id
@@ -15,8 +15,16 @@ def dashboard(request, user_id):
     
     if request.user.is_authenticated:
         print("Usuario autenticado")
-        return render(request, "home/dashboard.html", context)
+        return render(request, "home.html", context)
     
     messages.error(request, "No ha iniciado sesión")
     return redirect("login")
+
+
+def appointments(request):
+    return render(request, "appointments/appointments.html")
+
+
+def profile(request):
+    return render(request, "profile/profile.html")
     

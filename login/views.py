@@ -3,11 +3,13 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 import json
+from .forms import *
+from dashboard.views import *
+from dashboard.urls import *
 
 # Create your views here.
 
@@ -30,6 +32,9 @@ def log_in(request):
                 login(request, user)
                 messages.success(request, f"Inicio de sesión exitoso")
                 print("Inicio de sesión exitoso")
+                
+                return redirect("home", user_id = user.oid)
+                
             else:
                 messages.error(
                     request,
@@ -94,12 +99,3 @@ def register_part_two(request):
 
     return render(request, "signup/signup_part_two.html", context)
 
-
-def appointments(request):
-    return render(request, "appointments/appointments.html")
-
-def profile(request):
-    return render(request, "profile/profile.html")
-
-def home(request):
-    return render(request, "login/home.html")

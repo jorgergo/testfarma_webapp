@@ -6,7 +6,7 @@ body {
   background-color: rgb(250, 203, 12);
 }
 
-.container {
+.container_s {
     display: grid;
     grid-template-areas:
       "col1 col1 col3"
@@ -14,6 +14,8 @@ body {
     grid-template-columns: 1fr 1fr 2fr;
     grid-template-rows: 50vh 50vh;
     height: 100vh;
+    margin-left: 10px;
+    margin-right: 20px;
   }
   
   .column {
@@ -53,7 +55,7 @@ body {
   
   /* Media queries */
   @media screen and (max-width: 768px) {
-    .container {
+    .container_s {
       grid-template-areas:
         "col1 col1"
         "col2 col2"
@@ -76,7 +78,7 @@ body {
   }
   
   @media screen and (max-width: 480px) {
-    .container {
+    .container_s {
       grid-template-areas:
         "col1"
         "col2"
