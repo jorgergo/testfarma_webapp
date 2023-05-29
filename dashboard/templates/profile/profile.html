@@ -20,9 +20,65 @@
 
 <body>
     <div class="container_s">
-        <div class="column column1">Columna 1</div>
-        <div class="column column2">Columna 2</div>
-        <div class="column column3">Columna 3</div>
+        <div class="column column1"> 
+          <div class="contenedor">
+            <img class="img-paciente" src="{% static 'assets/images/paciente.png' %}" alt="patient">
+            <h1 class="usernametext">$User</h1>
+          </div>
+        </div>
+
+        <div class="column column2">
+          <div class="button-container">
+            <button class="button"><h1>Información de cuenta</h1></button>
+            <button class="button"><h1>Configuración</h1></button>
+          </div>
+        </div>
+
+        <div class="column column3">
+
+          <form action="/action_page.php">
+            <div class="form-group">
+              <label for="fname"><h1>Nombre de usuario</h1></label>
+              <div class="input-group">
+                <input type="text" id="fname" name="fname" value="John">
+                <button type="submit" class="submit-button">
+                  <span class="arrow">&#8592;</span>
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="lname"><h1>******************</h1></label>
+              <div class="input-group">
+                <input type="text" id="lname" name="lname" value="Doe">
+                <button type="submit" class="submit-button">
+                  <span class="arrow">&#8592;</span>
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fname"><h1>******************</h1></label>
+              <div class="input-group">
+                <input type="text" id="fname" name="fname" value="John">
+                <button type="submit" class="submit-button">
+                  <span class="arrow">&#8592;</span>
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="lname"><h1>******************</h1></label>
+              <div class="input-group">
+                <input type="text" id="lname" name="lname" value="Doe">
+                <button type="submit" class="submit-button">
+                  <span class="arrow">&#8592;</span>
+                </button>
+              </div>
+            </div>
+          </form>
+          
+
+          
+        </div>
+
       </div>
 </body>
 </html>
