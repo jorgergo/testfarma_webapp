@@ -68,7 +68,7 @@
 }
 
 .tittle-right {
-  padding-top: 30.8rem;
+  padding-top: 25rem;
   font-size: 2.6rem;
   font-weight: bold;
   letter-spacing: 0.1rem;
@@ -179,6 +179,10 @@ form {
 
 a {
   color: #d0a700;
+}
+
+.btn-select{
+  width: 100%;
 }
 
 @media screen and (max-width: 1180px) {
