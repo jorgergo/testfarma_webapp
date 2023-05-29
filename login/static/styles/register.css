@@ -18,6 +18,13 @@
   background-color: #fff9ec;
 }
 
+.titulo-mid {
+  color: #333;
+  font-weight: bold;
+  font-size: 4rem;
+  text-align: center;
+}
+
 .titulo-left {
   color: #333;
   font-weight: bold;
@@ -89,6 +96,16 @@
 .next-btn:hover {
   background-color: #ffdc4e;
   transition: all 0.1s;
+}
+
+.img-checkmark {
+  max-width: 50%;
+  margin-bottom: 0.83em;
+  padding-top: 0.8rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
 @media screen and (max-width: 1180px) {

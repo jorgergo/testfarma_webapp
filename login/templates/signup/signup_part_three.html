@@ -1,0 +1,49 @@
+{% extends "layouts/header.html"%}
+<!--  -->
+{% load crispy_forms_filters %}
+<!--  -->
+{% block content %}
+<!--  -->
+{% load static %}
+<!--  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'styles/register.css' %}" />
+
+    <title>Registro de Usuarios</title>
+  </head>
+  <body>
+    <div class="split left">
+      <div class="flex-left">
+        <div>
+            <img class="img-checkmark" src="{% static 'assets/images/checkmark.png' %}" alt="checkmark" />
+            <p class="titulo-mid">Tu cuenta se ha</p>
+            <p class="titulo-mid">creado con exito!</p>
+        </div>
+      </div>
+    </div>
+    <div class="split right">
+        <form method="POST" class="form-flex">
+            {% csrf_token %}
+            <p class="titulo-mid">Ahora puedes iniciar sesion con tu correo y contraseña</p>
+            <div class="btn-sig">
+                <button class="next-btn" type="submit">Ir al inicio de Sesión</button>
+            </div>
+        </form>
+      
+    </div>
+
+    <script>
+      function link_to_view() {
+        window.location.href = "{% url 'login' %}";
+      }
+    </script>
+  </body>
+</html>
+
+{% endblock %}

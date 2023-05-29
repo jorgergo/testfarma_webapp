@@ -93,9 +93,19 @@ def register_part_two(request):
                 messages.success(request, f"Usuario creado exitosamente")
                 print("USER CREATED SUSSCESFULLY")
 
+                return redirect("register_part_three")
+
             except Exception as e:
                 messages.error(request, f"Error al crear usuario")
                 print(e)
 
     return render(request, "signup/signup_part_two.html", context)
+
+
+def register_part_three(request):
+
+    if request.method == "POST":
+        return redirect("login")
+
+    return render(request, "signup/signup_part_three.html")
 
