@@ -136,6 +136,7 @@ input {
   height: 4rem;
   position: relative;
   left: 78%;
+  font-size: 1.2rem;
 }
 
 .btn-right.small {
@@ -194,5 +195,44 @@ input {
   }
   .studies {
     max-height: 30rem;
+  }
+}
+
+
+@media (max-width: 1500px) {
+  .col.appointments {
+    padding-bottom: 1rem;
+  }
+  .container-fluid.appointments {
+    min-height: 40rem;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2.5rem;
+  }
+  .studies {
+    max-height: 25rem;
+  }
+  .dates {
+    max-height: 30rem;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .card-title {
+    font-size: 1.2rem;
+  }
+  .card-text {
+    font-size: 1rem;
+  }
+  .modal-body {
+    font-size: 1.2rem !important;
+  }
+  .modal-title {
+    font-size: 1.5rem !important;
+  }
+  .btn-right {
+    width: 25%;
+    left: 75%;
+    font-size: 1rem;
   }
 }
