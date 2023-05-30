@@ -12,12 +12,9 @@ from login.urls import *
 def home(request):
     return render(request, "home.html")
 
-def recomendations(request, user_id):
-    
-    return render(request, "recomendations.html")
 
-def appointments(request):
-    return render(request, "appointments/appointments.html")
+def recommendations(request, user_id):
+    return render(request, "recommendations/recommendations.html")
 
 
 def profile(request):

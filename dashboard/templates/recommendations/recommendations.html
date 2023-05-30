@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="{% static 'styles/appointments.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/recommendations.css' %}" />
     <title>Agendar Estudio</title>
   </head>
   <body>
@@ -30,14 +30,8 @@
         <div class="modal-content">
           <div class="modal-header border-0">
             <h1 class="modal-title fs-5 title" id="exampleModalLabel">
-              Detalles del Estudio
+              ¿Estás seguro de que deseas eliminar este estudio?
             </h1>
-          </div>
-          <div class="modal-body border-0">
-            <p>Nombre del Estudio: nombre_studio</p>
-            <p>Dirección: direccion_laboratorio</p>
-            <p>Fecha: fecha</p>
-            <p>Hora: hora</p>
           </div>
           <div class="modal-footer border-0">
             <button
@@ -47,8 +41,12 @@
             >
               Cancelar
             </button>
-            <button type="button" class="btn modal-right">
-              Agendar Estudio
+            <button
+              type="button"
+              class="btn modal-right"
+              id="modal-delete-button"
+            >
+              Eliminar
             </button>
           </div>
         </div>
@@ -58,7 +56,7 @@
       <div class="row d-flex justify-content-around">
         <div class="col col-md-4 appointments">
           <div class="row">
-            <div class="col title"><p>Buscar Estudio Recomendado</p></div>
+            <div class="col title"><p>Buscar Estudios Recomendados</p></div>
           </div>
           <div class="row studies">
             <form action="">
@@ -74,7 +72,7 @@
                 <input
                   type="text"
                   class="form-control form-control-lg"
-                  id="sucursal"
+                  id="sucursal1"
                   placeholder="Sucursal"
                 />
               </div>
@@ -82,7 +80,7 @@
                 <input
                   type="text"
                   class="form-control form-control-lg"
-                  id="sucursal"
+                  id="sucursa2"
                   placeholder="Sucursal"
                 />
               </div>
@@ -90,7 +88,7 @@
                 <input
                   type="text"
                   class="form-control form-control-lg"
-                  id="sucursal"
+                  id="sucursal3"
                   placeholder="Sucursal"
                 />
               </div>
@@ -98,7 +96,7 @@
                 <input
                   type="text"
                   class="form-control form-control-lg"
-                  id="sucursal"
+                  id="sucursal4"
                   placeholder="Sucursal"
                 />
               </div>
@@ -128,22 +126,15 @@
               </div>
             </form>
           </div>
-          <button
-            type="button"
-            class="btn btn-left"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            Buscar
-          </button>
+          <button type="button" class="btn btn-left">Buscar</button>
         </div>
         <div class="col col-md-7 appointments">
           <div class="row">
-            <div class="col title"><p>Estudios Agendados</p></div>
+            <div class="col title"><p>Estudios Recomendados</p></div>
           </div>
           <div class="row dates">
             <div class="card">
-              <div class="card-body">
+              <div class="card-body" id="card-1" onclick="deleteCard('card-1')">
                 <h5 class="card-title">Título del Estudio</h5>
                 <p class="card-text">
                   Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
@@ -151,15 +142,25 @@
                 </p>
                 <p class="card-text">Fecha: 25/05/2023</p>
                 <p class="card-text">Hora: 16:45</p>
-                <button type="submit" class="btn btn-right">
+                <button
+                  type="submit"
+                  class="btn btn-right"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
                   <i class="bi bi-calendar-x"></i>
                   &nbsp;Cancelar Estudio
                 </button>
-                <button type="submit" class="btn btn-right small">
+                <button
+                  type="submit"
+                  class="btn btn-right small"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
                   <i class="bi bi-calendar-x"></i>
                 </button>
               </div>
-              <div class="card-body">
+              <div class="card-body" id="card-2" onclick="deleteCard('card-2')">
                 <h5 class="card-title">Título del Estudio</h5>
                 <p class="card-text">
                   Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
@@ -167,15 +168,25 @@
                 </p>
                 <p class="card-text">Fecha: 25/05/2023</p>
                 <p class="card-text">Hora: 16:45</p>
-                <button type="submit" class="btn btn-right">
+                <button
+                  type="submit"
+                  class="btn btn-right"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
                   <i class="bi bi-calendar-x"></i>
                   &nbsp;Cancelar Estudio
                 </button>
-                <button type="submit" class="btn btn-right small">
+                <button
+                  type="submit"
+                  class="btn btn-right small"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
                   <i class="bi bi-calendar-x"></i>
                 </button>
               </div>
-              <div class="card-body">
+              <div class="card-body" id="card-3" onclick="deleteCard('card-3')">
                 <h5 class="card-title">Título del Estudio</h5>
                 <p class="card-text">
                   Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
@@ -183,15 +194,25 @@
                 </p>
                 <p class="card-text">Fecha: 25/05/2023</p>
                 <p class="card-text">Hora: 16:45</p>
-                <button type="submit" class="btn btn-right">
+                <button
+                  type="submit"
+                  class="btn btn-right"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
                   <i class="bi bi-calendar-x"></i>
                   &nbsp;Cancelar Estudio
                 </button>
-                <button type="submit" class="btn btn-right small">
+                <button
+                  type="submit"
+                  class="btn btn-right small"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
                   <i class="bi bi-calendar-x"></i>
                 </button>
               </div>
-              <div class="card-body">
+              <div class="card-body" id="card-4" onclick="deleteCard('card-4')">
                 <h5 class="card-title">Título del Estudio</h5>
                 <p class="card-text">
                   Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
@@ -199,11 +220,21 @@
                 </p>
                 <p class="card-text">Fecha: 25/05/2023</p>
                 <p class="card-text">Hora: 16:45</p>
-                <button type="submit" class="btn btn-right">
+                <button
+                  type="submit"
+                  class="btn btn-right"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
                   <i class="bi bi-calendar-x"></i>
                   &nbsp;Cancelar Estudio
                 </button>
-                <button type="submit" class="btn btn-right small">
+                <button
+                  type="submit"
+                  class="btn btn-right small"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
                   <i class="bi bi-calendar-x"></i>
                 </button>
               </div>
@@ -212,7 +243,33 @@
         </div>
       </div>
     </div>
+    <script>
+      function deleteCard(cardId) {
+        var modal = document.getElementById("exampleModal");
+        var deleteButton = document.getElementById("modal-delete-button");
+
+        // Create a new function for deleting the card
+        var deleteCardHandler = function () {
+          var card = document.getElementById(cardId);
+          if (card) {
+            card.remove(); // Remove the card element
+          }
+          // Close the modal and remove the backdrop using jQuery
+          $(modal).modal("hide");
+          $(".modal-backdrop").remove();
+
+          // Remove the event listener from the delete button
+          deleteButton.removeEventListener("click", deleteCardHandler);
+        };
+
+        // Add the event listener to the delete button
+        deleteButton.addEventListener("click", deleteCardHandler);
+
+        // Show the modal using jQuery
+        $(modal).modal("show");
+      }
+    </script>
   </body>
 </html>
 
-  {% endblock %}
+{% endblock %}
