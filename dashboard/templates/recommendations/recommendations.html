@@ -59,46 +59,13 @@
             <div class="col title"><p>Buscar Estudios Recomendados</p></div>
           </div>
           <div class="row studies">
-            <form action="">
+            <form method="POST">
+              {% csrf_token %}
               <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursal"
-                  placeholder="Peso"
-                />
+                {{ form.height }}
               </div>
               <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursal1"
-                  placeholder="Estatura"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursa2"
-                  placeholder="Tipo de Colesterol"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursal3"
-                  placeholder="Fumador"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursal4"
-                  placeholder="Alcohlico"
-                />
+                {{ form.weight }}
               </div>
             </form>
           </div>

@@ -33,7 +33,7 @@ def log_in(request):
                 messages.success(request, f"Inicio de sesión exitoso")
                 print("Inicio de sesión exitoso")
                 
-                return redirect("home", user_id = user.oid)
+                return redirect("home")
                 
             else:
                 messages.error(
@@ -109,3 +109,10 @@ def register_part_three(request):
 
     return render(request, "signup/signup_part_three.html")
 
+
+def log_out(request):
+    
+    logout(request)
+    messages.info(request, f"Cierre de sesión exitoso")
+
+    return redirect("login")
