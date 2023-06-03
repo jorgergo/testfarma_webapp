@@ -59,70 +59,13 @@
             <div class="col title"><p>Buscar Estudios Recomendados</p></div>
           </div>
           <div class="row studies">
-            <form action="">
+            <form method="POST">
+              {% csrf_token %}
               <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursal"
-                  placeholder="Sucursal"
-                />
+                {{ form.height }}
               </div>
               <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursal1"
-                  placeholder="Sucursal"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursa2"
-                  placeholder="Sucursal"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursal3"
-                  placeholder="Sucursal"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursal4"
-                  placeholder="Sucursal"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="servicio"
-                  placeholder="Servicio"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="date"
-                  class="form-control form-control-lg"
-                  id="fecha"
-                  placeholder="Fecha"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="hora"
-                  placeholder="Hora"
-                />
+                {{ form.weight }}
               </div>
             </form>
           </div>
