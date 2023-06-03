@@ -11,11 +11,9 @@ from sklearn.mixture import GaussianMixture
 import numpy as np
 import pickle
 
-# Model_H, Model_M = pickle.load(open("TestFarma.p", "rb"))
+Model_H, Model_M = pickle.load(open("TestFarma_Model_HW.p", "rb"))
 
 # Create your views here.
-
-
 
 @login_required(login_url="login")
 def home(request):
@@ -26,9 +24,38 @@ def home(request):
 def recommendations(request):
     
     form = RecommendationsForm()
+
+    message = 0
     
+    if request.method == "POST":
+        
+        form = RecommendationsForm(request.POST)
+        
+        if form.is_valid():
+            
+            data = form.cleaned_data
+            
+            weight = float(data["weight"])
+            height = float(data["height"])
+            
+            weight = np.asarray(weight).reshape(-1, 1)
+            height = np.asarray(height).reshape(-1, 1)
+            
+            print("Hombres:")
+            
+            print(str(Model_H.predict_proba(weight)))
+            print(str(Model_H.predict_proba(height)))
+        
+            print("Mujeres:")
+            
+            print(str(Model_M.predict_proba(weight)))
+            print(str(Model_M.predict_proba(height)))
+            
+            message = str(Model_H.predict_proba(weight))
+            
     context = {
-        "form": form
+        "form": form,
+        "message" : message
     }
     
     return render(request, "recommendations/recommendations.html", context)
