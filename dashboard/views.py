@@ -15,10 +15,7 @@ Model_H, Model_M = pickle.load(open("TestFarma_Model_HW.p", "rb"))
 
 # Create your views here.
 
-<<<<<<< HEAD
 
-=======
->>>>>>> main
 @login_required(login_url="login")
 def home(request):
     return render(request, "home.html")
@@ -28,10 +25,8 @@ def home(request):
 def recommendations(request):
     form = RecommendationsForm()
 
-<<<<<<< HEAD
     context = {"form": form}
 
-=======
     message = 0
     
     if request.method == "POST":
@@ -65,7 +60,6 @@ def recommendations(request):
         "message" : message
     }
     
->>>>>>> main
     return render(request, "recommendations/recommendations.html", context)
 
 
