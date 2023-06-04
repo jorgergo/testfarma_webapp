@@ -52,6 +52,7 @@
         </div>
       </div>
     </div>
+    <!-- Modal -->
     <div class="container-fluid appointments h-100 align-items-center">
       <div class="row d-flex justify-content-around">
         <div class="col col-md-4 appointments">
@@ -67,9 +68,15 @@
               <div class="mb-3">
                 {{ form.weight }}
               </div>
+
+              <div class="mb-3">
+                {{ message }}
+              </div>
+
+              <button class="btn btn-left">Buscar</button>
+
             </form>
           </div>
-          <button type="button" class="btn btn-left">Buscar</button>
         </div>
         <div class="col col-md-7 appointments">
           <div class="row">

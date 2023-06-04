@@ -198,8 +198,8 @@ input {
   }
 }
 
-
-@media (max-width: 1500px) {
+/* 1500px */
+@media (max-width: 1487px) {
   .col.appointments {
     padding-bottom: 1rem;
   }
