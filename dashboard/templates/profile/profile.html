@@ -38,36 +38,37 @@
 
           <form action="/action_page.php">
             <div class="form-group">
-              <label for="fname"><h1>Nombre de usuario</h1></label>
+              <label for="fname"><h1>Editar Información</h1></label>
+              <label for="fname"><h1>Correo Electronico</h1></label>
               <div class="input-group">
-                <input type="text" id="fname" name="fname" value="John">
+                <input type="text" id="fname" name="fname" value="{{ user.email}}" disabled>
                 <button type="submit" class="submit-button">
                   <span class="arrow">&#8592;</span>
                 </button>
               </div>
             </div>
             <div class="form-group">
-              <label for="lname"><h1>******************</h1></label>
+              <label for="lname"><h1>Contraseña</h1></label>
               <div class="input-group">
-                <input type="text" id="lname" name="lname" value="Doe">
+                <input type="text" id="lname" name="lname" placeholder="Contraseña">
                 <button type="submit" class="submit-button">
                   <span class="arrow">&#8592;</span>
                 </button>
               </div>
             </div>
             <div class="form-group">
-              <label for="fname"><h1>******************</h1></label>
+              <label for="fname"><h1>Fehca de nacimiento</h1></label>
               <div class="input-group">
-                <input type="text" id="fname" name="fname" value="John">
+                <input type="text" id="fname" name="fname" value="{{ user.birth_date|date:'d/m/Y' }}" disabled>
                 <button type="submit" class="submit-button">
                   <span class="arrow">&#8592;</span>
                 </button>
               </div>
             </div>
             <div class="form-group">
-              <label for="lname"><h1>******************</h1></label>
+              <label for="lname"><h1>Genero</h1></label>
               <div class="input-group">
-                <input type="text" id="lname" name="lname" value="Doe">
+                <input type="text" id="lname" name="lname" value="{{ user.gender_text}}" disabled>
                 <button type="submit" class="submit-button">
                   <span class="arrow">&#8592;</span>
                 </button>

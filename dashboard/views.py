@@ -16,24 +16,31 @@ import pickle
 # Create your views here.
 
 
-
 @login_required(login_url="login")
 def home(request):
-    
     return render(request, "home.html")
+
 
 @login_required(login_url="login")
 def recommendations(request):
-    
     form = RecommendationsForm()
-    
-    context = {
-        "form": form
-    }
-    
+
+    context = {"form": form}
+
     return render(request, "recommendations/recommendations.html", context)
+
 
 @login_required(login_url="login")
 def profile(request):
-    
-    return render(request, "profile/profile.html")
+    user = User.objects.get(pk=request.user.pk)
+
+    if user.gender == "M":
+        user.gender_text = "Masculino"
+    elif user.gender == "F":
+        user.gender_text = "Femenino"
+    else:
+        user.gender_text = user.gender
+
+    context = {"user": user}
+
+    return render(request, "profile/profile.html", context)
