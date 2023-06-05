@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     
     'login',
     'dashboard',
+    'landing',
     
     'jquery',
     'crispy_forms',
