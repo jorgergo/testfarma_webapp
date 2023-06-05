@@ -54,3 +54,9 @@ button, input[type="submit"], input[type="reset"] {
     grid-template-columns: 400px auto ;
     text-align: start;
 }
+
+.text1{
+    font-family: 'Franklin Gothic Light', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    margin: 30px;
+}
