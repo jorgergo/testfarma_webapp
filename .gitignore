@@ -8,3 +8,4 @@ testfarma/__pycache__
 user/__pycache__
 user/migrations/
 *.sqlite3
+*.pyc

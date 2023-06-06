@@ -1,0 +1,214 @@
+{% include "layouts/dash_navbar.html"%}
+<!--  -->
+{% load crispy_forms_filters %}
+<!--  -->
+{% block content %}
+<!--  -->
+{% load static %}
+<!--  -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'styles/appointments.css' %}" />
+    <title>Agendar Estudio</title>
+  </head>
+  <body>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header border-0">
+            <h1 class="modal-title fs-5 title" id="exampleModalLabel">
+              Detalles de la cita
+            </h1>
+          </div>
+          <div class="modal-body border-0">
+            <p>Dirección: direccion_laboratorio</p>
+            <p>Fecha: fecha</p>
+            <p>Hora: hora</p>
+          </div>
+          <div class="modal-footer border-0">
+            <button
+              type="button"
+              class="btn modal-left"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn modal-right">Agendar Cita</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid appointments h-100 align-items-center">
+      <div class="row d-flex justify-content-around">
+        <div class="col col-md-4 appointments">
+          <div class="row">
+            <div class="col title"><p>Agendar Cita</p></div>
+          </div>
+          <div class="row studies">
+            <form action="">
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  id="sucursal"
+                  placeholder="Sucursal"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  id="sucursal"
+                  placeholder="Sucursal"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  id="sucursal"
+                  placeholder="Sucursal"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  id="sucursal"
+                  placeholder="Sucursal"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  id="sucursal"
+                  placeholder="Sucursal"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  id="servicio"
+                  placeholder="Servicio"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="date"
+                  class="form-control form-control-lg"
+                  id="fecha"
+                  placeholder="Fecha"
+                />
+              </div>
+              <div class="mb-3">
+                <input
+                  type="text"
+                  class="form-control form-control-lg"
+                  id="hora"
+                  placeholder="Hora"
+                />
+              </div>
+            </form>
+          </div>
+          <button
+            type="button"
+            class="btn btn-left"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Buscar
+          </button>
+        </div>
+        <div class="col col-md-7 appointments">
+          <div class="row">
+            <div class="col title"><p>Citas Agendadas</p></div>
+          </div>
+          <div class="row dates">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Título del Estudio</h5>
+                <p class="card-text">
+                  Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
+                  01210 Ciudad de México, CDMX
+                </p>
+                <p class="card-text">Fecha: 25/05/2023</p>
+                <p class="card-text">Hora: 16:45</p>
+                <button type="submit" class="btn btn-right">
+                  <i class="bi bi-calendar-x"></i>
+                  &nbsp;Cancelar Cita
+                </button>
+                <button type="submit" class="btn btn-right small">
+                  <i class="bi bi-calendar-x"></i>
+                </button>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Título del Estudio</h5>
+                <p class="card-text">
+                  Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
+                  01210 Ciudad de México, CDMX
+                </p>
+                <p class="card-text">Fecha: 25/05/2023</p>
+                <p class="card-text">Hora: 16:45</p>
+                <button type="submit" class="btn btn-right">
+                  <i class="bi bi-calendar-x"></i>
+                  &nbsp;Cancelar Cita
+                </button>
+                <button type="submit" class="btn btn-right small">
+                  <i class="bi bi-calendar-x"></i>
+                </button>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Título del Estudio</h5>
+                <p class="card-text">
+                  Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
+                  01210 Ciudad de México, CDMX
+                </p>
+                <p class="card-text">Fecha: 25/05/2023</p>
+                <p class="card-text">Hora: 16:45</p>
+                <button type="submit" class="btn btn-right">
+                  <i class="bi bi-calendar-x"></i>
+                  &nbsp;Cancelar Cita
+                </button>
+                <button type="submit" class="btn btn-right small">
+                  <i class="bi bi-calendar-x"></i>
+                </button>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Título del Estudio</h5>
+                <p class="card-text">
+                  Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
+                  01210 Ciudad de México, CDMX
+                </p>
+                <p class="card-text">Fecha: 25/05/2023</p>
+                <p class="card-text">Hora: 16:45</p>
+                <button type="submit" class="btn btn-right">
+                  <i class="bi bi-calendar-x"></i>
+                  &nbsp;Cancelar Cita
+                </button>
+                <button type="submit" class="btn btn-right small">
+                  <i class="bi bi-calendar-x"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+{% endblock %}

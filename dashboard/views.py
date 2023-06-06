@@ -28,39 +28,38 @@ def recommendations(request):
     context = {"form": form}
 
     message = 0
-    
+
     if request.method == "POST":
-        
         form = RecommendationsForm(request.POST)
-        
+
         if form.is_valid():
-            
             data = form.cleaned_data
-            
+
             weight = float(data["weight"])
             height = float(data["height"])
-            
+
             weight = np.asarray(weight).reshape(-1, 1)
             height = np.asarray(height).reshape(-1, 1)
-            
+
             print("Hombres:")
-            
+
             print(str(Model_H.predict_proba(weight)))
             print(str(Model_H.predict_proba(height)))
-        
+
             print("Mujeres:")
-            
+
             print(str(Model_M.predict_proba(weight)))
             print(str(Model_M.predict_proba(height)))
-            
+
             message = str(Model_H.predict_proba(weight))
-            
-    context = {
-        "form": form,
-        "message" : message
-    }
-    
+
+    context = {"form": form, "message": message}
+
     return render(request, "recommendations/recommendations.html", context)
+
+
+def appointments(request):
+    return render(request, "appointments/appointments.html")
 
 
 @login_required(login_url="login")
