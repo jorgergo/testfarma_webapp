@@ -96,7 +96,15 @@
             <div class="col title"><p>Citas Agendadas</p></div>
           </div>
           <div class="row dates">
-            <div class="card cards_container"></div>
+            
+            <div class="card cards_container">
+              <div class="card-body" id="card-1" onclick="">
+                <h5 class="card-title">undefined</h5>
+                <p class="card-text">Dirección: undefined</p>
+                <p class="card-text">Fecha: undefined</p><p class="card-text">Hora: undefined</p>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
@@ -163,71 +171,6 @@
         });
       });
 
-
-      $(document).ready(function () {
-        var cardIdCounter = 1;
-
-        $("#agendarButton").click(function (e) {
-          e.preventDefault();
-
-          // Retrieve the input values
-          var servicio = $("#servicio").val();
-          var direccion = $("#direccion").val();
-          var fecha = $("#fecha").val();
-          var hora = $("#hora").val();
-
-          // Validate the input values
-          if (servicio === "Servicio" || !direccion || !fecha || !hora) {
-            // If any of the input values are empty, show an alert or error message
-            alert("Please fill in all the required fields.");
-            $("#createAppointmentModal").modal("hide");
-            $(".modal-backdrop").remove();
-            return; // Abort the card creation process
-          }
-
-          // Generate a unique card ID
-          var cardId = "card-" + cardIdCounter;
-          cardIdCounter++;
-
-          // Create the new card body HTML
-          var newCardBody =
-            '<div class="card-body" id="' +
-            cardId +
-            '" onclick="deleteCard(\'' +
-            cardId +
-            "')\">" +
-            '<h5 class="card-title">' +
-            servicio +
-            "</h5>" +
-            '<p class="card-text">Dirección: ' +
-            direccion +
-            "</p>" +
-            '<p class="card-text">Fecha: ' +
-            fecha +
-            "</p>" +
-            '<p class="card-text">Hora: ' +
-            hora +
-            "</p>" +
-            "</div>" +
-            "</div>";
-
-          // Add the new card body to the existing row
-          $(".cards_container").append(newCardBody);
-
-          // Reset the form input values
-          $("#servicio").val("Servicio");
-          $("#direccion").val("");
-          $("#fecha").val("");
-          $("#hora").val("");
-
-          // Close the modal using jQuery
-          $("#createAppointmentModal").modal("hide");
-          $(".modal-backdrop").remove();
-        });
-
-        // Rest of the existing code...
-        // ...
-      });
     </script>
   </body>
 </html>
