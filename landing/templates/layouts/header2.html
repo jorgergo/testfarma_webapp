@@ -1,7 +1,9 @@
 {% load static %}
 
 <!DOCTYPE html>
+
 <html lang="en">
+
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,7 +11,7 @@
 
         <link
         rel="shortcut icon"
-        href="{% static 'assets/favicon.ico' %}"
+        href=""
         type="image/x-icon"
         />
 
@@ -42,30 +44,32 @@
         ></script>
 
         <!-- Custom JS -->
+        <!-- 
         <script
         type="text/javascript"
-        src="{% static 'scripts/header.js' %}"
+        src="' %}"
         ></script>
+        -->
 
         <!-- Custom CSS -->
-        <link rel="stylesheet" href="{% static 'styles/headerTest.css' %}" />
+        <link rel="stylesheet" href="" />
 
         <title></title>
     </head>
-    
-    <body>
-        <!-- NavBar -->
-        {% include 'layouts/navbar.html' %}
-        <!--  -->
-        {% include 'layouts/messaging.html' %}
-        <!--  -->
-        {% block content %}
-        <!--  -->
-        {% endblock %}
-        <!--  -->
-    </body>
 
-    <footer>
-        {% include 'layouts/footer.html' %}
-    </footer>
+    <body>
+
+        {% include 'layouts/navbar2.html' %}
+
+        <main role="main" class="container-xl">
+            <div class="row">
+                <div class="col-lg-12 col-md-12-p-0 col-sm-12">
+                    {% include 'layouts/messaging2.html' %}
+                    {% block content %}
+                    
+                    {% endblock %}
+                </div>
+            </div>
+        </main>
+    </body>
 </html>
