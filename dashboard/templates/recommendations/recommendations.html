@@ -69,10 +69,6 @@
                 {{ form.weight }}
               </div>
 
-              <div class="mb-3">
-                {{ message }}
-              </div>
-
               <button class="btn btn-left">Buscar</button>
 
             </form>
@@ -82,35 +78,57 @@
           <div class="row">
             <div class="col title"><p>Estudios Recomendados</p></div>
           </div>
+
+          
+
           <div class="row dates">
             <div class="card">
-              <div class="card-body" id="card-1" onclick="deleteCard('card-1')">
-                <h5 class="card-title">Título del Estudio</h5>
-                <p class="card-text">
-                  Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
-                  01210 Ciudad de México, CDMX
-                </p>
-                <p class="card-text">Fecha: 25/05/2023</p>
-                <p class="card-text">Hora: 16:45</p>
-                <button
-                  type="submit"
-                  class="btn btn-right"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
-                  <i class="bi bi-calendar-x"></i>
-                  &nbsp;Cancelar Estudio
-                </button>
-                <button
-                  type="submit"
-                  class="btn btn-right small"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
-                  <i class="bi bi-calendar-x"></i>
-                </button>
-              </div>
-              <div class="card-body" id="card-2" onclick="deleteCard('card-2')">
+
+              {% if status == 1 %}
+
+                <div class="card-body" id="card-1" onclick="deleteCard('card-1')">
+                  <h5 class="card-title">{{ study.name }}</h5>
+                  <p class="card-text">
+                    Sucursal: {{ study.subsidiary }}
+                  </p>
+                  <p class="card-text">Fecha: {{ study.date }}</p>
+                  <p class="card-text">Hora: {{ study.hour }}</p>
+                  <button
+                    type="submit"
+                    class="btn btn-right"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                  >
+                    <i class="bi bi-calendar-x"></i>
+                    &nbsp;Opciones
+                  </button>
+                  <button
+                    type="submit"
+                    class="btn btn-right small"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                  >
+                    <i class="bi bi-calendar-x"></i>
+                  </button>
+                </div>
+                
+              {% elif status == 0 %}
+
+                <div>
+                  <p>No hay estudios recomendados</p>
+                </div>
+
+              {% else %}
+
+                <div>
+                  <p>Ingrese los datos para buscar estudios recomendados</p>
+                </div>
+
+              {% endif %}
+
+
+              
+              <!-- <div class="card-body" id="card-2" onclick="deleteCard('card-2')">
                 <h5 class="card-title">Título del Estudio</h5>
                 <p class="card-text">
                   Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
@@ -187,7 +205,7 @@
                 >
                   <i class="bi bi-calendar-x"></i>
                 </button>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

@@ -19,34 +19,16 @@ Model_M = GaussianMixture(n_components = 3)
 
 
 #Man Model
-weight = np.asarray(DF_H.weight)
-height = np.asarray(DF_H.height)
+vars_h = np.asarray(DF_H[["weight", "height"]])
 
-Model_H.fit(weight.reshape(-1,1))
-Model_H.fit(height.reshape(-1,1))
+print(vars_h)
+
+Model_H.fit(vars_h)
 
 #Woman Model
-weight = np.asarray(DF_M.weight)
-height = np.asarray(DF_M.height)
+vars_m = np.asarray(DF_M[["weight", "height"]])
 
-Model_M.fit(weight.reshape(-1,1))
-Model_M.fit(height.reshape(-1,1))
-
-
-# weight_input = float(input("Enter your weight: "))
-# weight_input = np.asarray(weight_input)
-
-# gender = input("Inserte Genero: ")
-
-# if gender == "H":
-    
-#     p = Model_H.predict_proba(weight.reshape(-1,1))
-#     print(p)
-
-# else:
-    
-#     p = Model_M.predict_proba(weight.reshape(-1,1))
-#     print(p)
+Model_M.fit(vars_m)
 
 pickle.dump((Model_H, Model_M), open("TestFarma_Model_HW.p", "wb"))
 
