@@ -67,7 +67,14 @@ def recommendations(request):
 
 
 def appointments(request):
-    return render(request, "appointments/appointments.html")
+    
+    form = AppointmentsForm()
+    
+    context = {
+        "form": form
+    }
+    
+    return render(request, "appointments/appointments.html", context)
 
 
 @login_required(login_url="login")
@@ -84,3 +91,10 @@ def profile(request):
     context = {"user": user}
 
     return render(request, "profile/profile.html", context)
+
+
+def load_towns(request):
+    state_id = request.GET.get("state")
+    towns = Town.objects.filter(state_id=state_id).order_by("town")
+    return render(request, "snippets/town_dropdown_list_options.html", {"towns": towns})
+

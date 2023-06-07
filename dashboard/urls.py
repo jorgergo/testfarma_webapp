@@ -8,4 +8,6 @@ urlpatterns = [
     path("recommendations", views.recommendations, name="recommendations"),
     path("appointments", views.appointments, name="appointments"),
     path("profile", views.profile, name="profile"),
+    
+    path("ajax/load-towns/", views.load_towns, name="ajax_load_towns"), # AJAX
 ]

@@ -64,67 +64,26 @@
             <div class="col title"><p>Agendar Cita</p></div>
           </div>
           <div class="row studies">
-            <form action="">
+            <form method="POST" id="reg_form" data-towns-url="{% url 'ajax_load_towns' %}">
+              
               <div class="mb-3">
-                <select
-                  class="form-select"
-                  id="direccion"
-                  aria-label="Default select example"
-                >
-                  <option value="Sucursal 0" selected>Sucursal 0</option>
-                  <option value="Sucursal 1">Sucursal 1</option>
-                  <option value="Sucursal 2">Sucursal 2</option>
-                  <option value="Sucursal 3">Sucursal 3</option>
-                  <option value="Sucursal 4">Sucursal 4</option>
-                </select>
+                {{ form.state|as_crispy_field }}
               </div>
-              <select
-                class="form-select"
-                id="servicio"
-                aria-label="Default select example"
-              >
-                <option selected>Servicio</option>
-                <option value="Biometría Hemática">Biometría Hemática</option>
-                <option value="Examen General de Orina">
-                  Examen General de Orina
-                </option>
-                <option value="Proteínas en Orina de 24 horas">
-                  Proteínas en Orina de 24 horas
-                </option>
-                <option value="Depuración de Creatinina en Orina de 24 Hrs.">
-                  Depuración de Creatinina en Orina de 24 Hrs.
-                </option>
-                <option value="Depuración de Creatinina en Orina de 24 Hrs.">
-                  Depuración de Creatinina en Orina de 24 Hrs.
-                </option>
-                <option value="Alanina aminotransferasa (ALT/TGP)">
-                  Alanina aminotransferasa (ALT/TGP)
-                </option>
-                <option value="Creatina cinasa (CK)">
-                  Creatina cinasa (CK)
-                </option>
-                <option value="Glucosa">Glucosa</option>
-                <option value="Urea">Urea</option>
-                <option value="Creatinina">Creatinina</option>
-                <option value="Aspartato aminotransferasa (AST/TGO)">
-                  Aspartato aminotransferasa (AST/TGO)
-                </option>
-              </select>
+
               <div class="mb-3">
-                <input
-                  type="date"
-                  class="form-control form-control-lg"
-                  id="fecha"
-                  placeholder="Fecha"
-                />
+                {{ form.town|as_crispy_field }}
               </div>
+
+              <div class="mb-3">
+                {{ form.study|as_crispy_field }}
+              </div>
+          
+              <div class="mb-3">
+                {{ form.date|as_crispy_field }}
+              </div>
+
               <div class="mb-3 cs-form">
-                <input
-                  type="time"
-                  id="hora"
-                  placeholder="Hora"
-                  class="form-control"
-                />
+                {{ form.hour|as_crispy_field }}
               </div>
             </form>
           </div>
@@ -185,6 +144,25 @@
         // Show the modal using jQuery
         $(modal).modal("show");
       }
+
+      $("#id_state").change(function () {
+        var url = $("#reg_form").attr("data-towns-url");  // get the url of the `load_cities` view
+        var stateId = $(this).val();  // get the selected country ID from the HTML input
+
+        $.ajax({                       // initialize an AJAX request
+            url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+            data: {
+            'state': stateId       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+            $("#id_town").html(data);  // replace the contents of the city input with the data that came from the server
+            },
+            error: function (data) {
+              alert("error");
+            }
+        });
+      });
+
 
       $(document).ready(function () {
         var cardIdCounter = 1;
