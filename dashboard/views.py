@@ -29,33 +29,38 @@ def recommendations(request):
 
     threshold = 0.8
     message = ""
+    
     if request.method == "POST":
+        
         form = RecommendationsForm(request.POST)
-
+        
         if form.is_valid():
+            
             data = form.cleaned_data
-
+            
             weight = float(data["weight"])
             height = float(data["height"])
             
-            weight = np.asarray(weight).reshape(-1, 1)
-            height = np.asarray(height).reshape(-1, 1)
+            variables = np.asarray([weight, height]).reshape(1, -1)
             
-            print("Hombres:")
+            probability_H = str(np.max(Model_H.predict_proba(variables)))
+            probability_M = str(np.max(Model_M.predict_proba(variables)))
             
-            print(str(Model_H.predict_proba(weight)))
-            print(str(Model_H.predict_proba(height)))
+            print(probability_H)
         
-            print("Mujeres:")
-            
-            print(str(Model_M.predict_proba(weight)))
-            print(str(Model_M.predict_proba(height)))
-            
-            message = str(Model_H.predict_proba(weight))
+            if float(probability_H) > threshold:
+                
+                print("Se necesita un estudio de triglicéridos")
+                message = 1
+                
+            else :
+                print("Dentro del Rango")       
+                message = 0    
             
     context = {
         "form": form,
-        "message" : message
+        "status": message,
+        "study" : {"name": "Triglicéridos", "description": "ES-TR-01", "subsidiary": "TOLUCA MX" , "date" : "01/01/2020", "hour" : "10:00 AM"}
     }
     
     return render(request, "recommendations/recommendations.html", context)
