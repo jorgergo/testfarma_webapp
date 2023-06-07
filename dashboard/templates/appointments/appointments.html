@@ -20,7 +20,7 @@
     <!-- Modal -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="appointmentCancelModal"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -28,11 +28,12 @@
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
           <div class="modal-header border-0">
-            <h1 class="modal-title fs-5 title" id="exampleModalLabel">
-              Detalles de la cita
+            <h1 class="modal-title fs-5 title" id="appointmentCancel">
+              ¿Estás seguro que deseas eliminar esta cita?
             </h1>
           </div>
           <div class="modal-body border-0">
+            <p>Servicio: servicio</p>
             <p>Dirección: direccion_laboratorio</p>
             <p>Fecha: fecha</p>
             <p>Hora: hora</p>
@@ -45,7 +46,13 @@
             >
               Cancelar
             </button>
-            <button type="button" class="btn modal-right">Agendar Cita</button>
+            <button
+              type="button"
+              class="btn modal-right"
+              id="modal-delete-button"
+            >
+              Eliminar
+            </button>
           </div>
         </div>
       </div>
@@ -59,53 +66,50 @@
           <div class="row studies">
             <form action="">
               <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursal"
-                  placeholder="Sucursal"
-                />
+                <select
+                  class="form-select"
+                  id="direccion"
+                  aria-label="Default select example"
+                >
+                  <option value="Sucursal 0" selected>Sucursal 0</option>
+                  <option value="Sucursal 1">Sucursal 1</option>
+                  <option value="Sucursal 2">Sucursal 2</option>
+                  <option value="Sucursal 3">Sucursal 3</option>
+                  <option value="Sucursal 4">Sucursal 4</option>
+                </select>
               </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursal"
-                  placeholder="Sucursal"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursal"
-                  placeholder="Sucursal"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursal"
-                  placeholder="Sucursal"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="sucursal"
-                  placeholder="Sucursal"
-                />
-              </div>
-              <div class="mb-3">
-                <input
-                  type="text"
-                  class="form-control form-control-lg"
-                  id="servicio"
-                  placeholder="Servicio"
-                />
-              </div>
+              <select
+                class="form-select"
+                id="servicio"
+                aria-label="Default select example"
+              >
+                <option selected>Servicio</option>
+                <option value="Biometría Hemática">Biometría Hemática</option>
+                <option value="Examen General de Orina">
+                  Examen General de Orina
+                </option>
+                <option value="Proteínas en Orina de 24 horas">
+                  Proteínas en Orina de 24 horas
+                </option>
+                <option value="Depuración de Creatinina en Orina de 24 Hrs.">
+                  Depuración de Creatinina en Orina de 24 Hrs.
+                </option>
+                <option value="Depuración de Creatinina en Orina de 24 Hrs.">
+                  Depuración de Creatinina en Orina de 24 Hrs.
+                </option>
+                <option value="Alanina aminotransferasa (ALT/TGP)">
+                  Alanina aminotransferasa (ALT/TGP)
+                </option>
+                <option value="Creatina cinasa (CK)">
+                  Creatina cinasa (CK)
+                </option>
+                <option value="Glucosa">Glucosa</option>
+                <option value="Urea">Urea</option>
+                <option value="Creatinina">Creatinina</option>
+                <option value="Aspartato aminotransferasa (AST/TGO)">
+                  Aspartato aminotransferasa (AST/TGO)
+                </option>
+              </select>
               <div class="mb-3">
                 <input
                   type="date"
@@ -114,23 +118,18 @@
                   placeholder="Fecha"
                 />
               </div>
-              <div class="mb-3">
+              <div class="mb-3 cs-form">
                 <input
-                  type="text"
-                  class="form-control form-control-lg"
+                  type="time"
                   id="hora"
                   placeholder="Hora"
+                  class="form-control"
                 />
               </div>
             </form>
           </div>
-          <button
-            type="button"
-            class="btn btn-left"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            Buscar
+          <button type="button" id="agendarButton" class="btn btn-left">
+            Agendar
           </button>
         </div>
         <div class="col col-md-7 appointments">
@@ -138,76 +137,120 @@
             <div class="col title"><p>Citas Agendadas</p></div>
           </div>
           <div class="row dates">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Título del Estudio</h5>
-                <p class="card-text">
-                  Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
-                  01210 Ciudad de México, CDMX
-                </p>
-                <p class="card-text">Fecha: 25/05/2023</p>
-                <p class="card-text">Hora: 16:45</p>
-                <button type="submit" class="btn btn-right">
-                  <i class="bi bi-calendar-x"></i>
-                  &nbsp;Cancelar Cita
-                </button>
-                <button type="submit" class="btn btn-right small">
-                  <i class="bi bi-calendar-x"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Título del Estudio</h5>
-                <p class="card-text">
-                  Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
-                  01210 Ciudad de México, CDMX
-                </p>
-                <p class="card-text">Fecha: 25/05/2023</p>
-                <p class="card-text">Hora: 16:45</p>
-                <button type="submit" class="btn btn-right">
-                  <i class="bi bi-calendar-x"></i>
-                  &nbsp;Cancelar Cita
-                </button>
-                <button type="submit" class="btn btn-right small">
-                  <i class="bi bi-calendar-x"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Título del Estudio</h5>
-                <p class="card-text">
-                  Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
-                  01210 Ciudad de México, CDMX
-                </p>
-                <p class="card-text">Fecha: 25/05/2023</p>
-                <p class="card-text">Hora: 16:45</p>
-                <button type="submit" class="btn btn-right">
-                  <i class="bi bi-calendar-x"></i>
-                  &nbsp;Cancelar Cita
-                </button>
-                <button type="submit" class="btn btn-right small">
-                  <i class="bi bi-calendar-x"></i>
-                </button>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Título del Estudio</h5>
-                <p class="card-text">
-                  Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
-                  01210 Ciudad de México, CDMX
-                </p>
-                <p class="card-text">Fecha: 25/05/2023</p>
-                <p class="card-text">Hora: 16:45</p>
-                <button type="submit" class="btn btn-right">
-                  <i class="bi bi-calendar-x"></i>
-                  &nbsp;Cancelar Cita
-                </button>
-                <button type="submit" class="btn btn-right small">
-                  <i class="bi bi-calendar-x"></i>
-                </button>
-              </div>
-            </div>
+            <div class="card cards_container"></div>
           </div>
         </div>
       </div>
     </div>
+
+    <script>
+      function deleteCard(cardId) {
+        var modal = document.getElementById("appointmentCancelModal");
+        var deleteButton = document.getElementById("modal-delete-button");
+
+        // Update the modal content based on the card body information
+        var card = document.getElementById(cardId);
+        var servicio = card.querySelector(".card-title").textContent;
+        var direccion = card.querySelector(
+          ".card-text:nth-of-type(1)"
+        ).textContent;
+        var fecha = card.querySelector(".card-text:nth-of-type(2)").textContent;
+        var hora = card.querySelector(".card-text:nth-of-type(3)").textContent;
+
+        modal.querySelector(".modal-body p:nth-of-type(1)").textContent =
+          "Servicio: " + servicio;
+
+        modal.querySelector(".modal-body p:nth-of-type(2)").textContent =
+          direccion;
+
+        modal.querySelector(".modal-body p:nth-of-type(3)").textContent = fecha;
+
+        modal.querySelector(".modal-body p:nth-of-type(4)").textContent = hora;
+
+        // Create a new function for deleting the card
+        var deleteCardHandler = function () {
+          card.remove(); // Remove the card element
+
+          // Close the modal and remove the backdrop using jQuery
+          $(modal).modal("hide");
+          $(".modal-backdrop").remove();
+
+          // Remove the event listener from the delete button
+          deleteButton.removeEventListener("click", deleteCardHandler);
+        };
+
+        // Add the event listener to the delete button
+        deleteButton.addEventListener("click", deleteCardHandler);
+
+        // Show the modal using jQuery
+        $(modal).modal("show");
+      }
+
+      $(document).ready(function () {
+        var cardIdCounter = 1;
+
+        $("#agendarButton").click(function (e) {
+          e.preventDefault();
+
+          // Retrieve the input values
+          var servicio = $("#servicio").val();
+          var direccion = $("#direccion").val();
+          var fecha = $("#fecha").val();
+          var hora = $("#hora").val();
+
+          // Validate the input values
+          if (servicio === "Servicio" || !direccion || !fecha || !hora) {
+            // If any of the input values are empty, show an alert or error message
+            alert("Please fill in all the required fields.");
+            $("#createAppointmentModal").modal("hide");
+            $(".modal-backdrop").remove();
+            return; // Abort the card creation process
+          }
+
+          // Generate a unique card ID
+          var cardId = "card-" + cardIdCounter;
+          cardIdCounter++;
+
+          // Create the new card body HTML
+          var newCardBody =
+            '<div class="card-body" id="' +
+            cardId +
+            '" onclick="deleteCard(\'' +
+            cardId +
+            "')\">" +
+            '<h5 class="card-title">' +
+            servicio +
+            "</h5>" +
+            '<p class="card-text">Dirección: ' +
+            direccion +
+            "</p>" +
+            '<p class="card-text">Fecha: ' +
+            fecha +
+            "</p>" +
+            '<p class="card-text">Hora: ' +
+            hora +
+            "</p>" +
+            "</div>" +
+            "</div>";
+
+          // Add the new card body to the existing row
+          $(".cards_container").append(newCardBody);
+
+          // Reset the form input values
+          $("#servicio").val("Servicio");
+          $("#direccion").val("");
+          $("#fecha").val("");
+          $("#hora").val("");
+
+          // Close the modal using jQuery
+          $("#createAppointmentModal").modal("hide");
+          $(".modal-backdrop").remove();
+        });
+
+        // Rest of the existing code...
+        // ...
+      });
+    </script>
   </body>
 </html>
 
