@@ -21,6 +21,7 @@ class Study(models.Model):
 class Appointment(models.Model):
     
     id = models.CharField(max_length=10, primary_key=True)
+    user_id = models.EmailField()
     place = models.CharField(max_length=100)
     study = models.ForeignKey(Study, on_delete=models.CASCADE)
     date = models.DateField()

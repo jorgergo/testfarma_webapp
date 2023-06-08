@@ -87,19 +87,14 @@
               {% if status == 1 %}
 
                 <div class="card-body" id="card-1" onclick="deleteCard('card-1')">
-                  <h5 class="card-title">{{ study.name }}</h5>
-                  <p class="card-text">
-                    Sucursal: {{ study.subsidiary }}
-                  </p>
-                  <p class="card-text">Fecha: {{ study.date }}</p>
-                  <p class="card-text">Hora: {{ study.hour }}</p>
+                  <h5 class="card-title">{{ study }}</h5>
                   <button
                     type="submit"
                     class="btn btn-right"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
                   >
-                    <i class="bi bi-calendar-x"></i>
+                    <i class="bi bi-calendar"></i>
                     &nbsp;Opciones
                   </button>
                   <button

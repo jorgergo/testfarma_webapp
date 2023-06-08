@@ -13,7 +13,10 @@ class RecommendationsForm(forms.Form):
                                 min_value=0, 
                                 max_value=300,
                                 widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Peso'}))
+            
 
+class AppointmentRecommendedForm(forms.Form):
+    
     state = forms.ModelChoiceField( required = True, 
                                     label = "Estado",
                                     queryset = State.objects.all(),
@@ -48,7 +51,6 @@ class RecommendationsForm(forms.Form):
             except (ValueError, TypeError):
                 pass
     
-            
 
 class AppointmentsForm(forms.Form):
     

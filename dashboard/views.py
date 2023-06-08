@@ -24,7 +24,9 @@ def home(request):
 
 @login_required(login_url="login")
 def recommendations(request):
+    
     form = RecommendationsForm()
+    appointment_form = AppointmentRecommendedForm()
 
     context = {"form": form}
 
@@ -44,12 +46,23 @@ def recommendations(request):
             
             variables = np.asarray([weight, height]).reshape(1, -1)
             
-            probability_H = str(np.max(Model_H.predict_proba(variables)))
-            probability_M = str(np.max(Model_M.predict_proba(variables)))
+            if request.user.gender == "M":
+                
+                print("Mujer")
+                probability = str(np.max(Model_M.predict_proba(variables)))
             
-            print(probability_H)
-        
-            if float(probability_H) > threshold:
+            elif request.user.gender == "H":
+                
+                print("Hombre")
+                probability = str(np.max(Model_H.predict_proba(variables)))
+                
+            else:
+                
+                messages.error(request, "Error al obtener el género")
+            
+            print(probability)
+            
+            if float(probability) > threshold:
                 
                 print("Se necesita un estudio de triglicéridos")
                 message = 1
@@ -61,7 +74,8 @@ def recommendations(request):
     context = {
         "form": form,
         "status": message,
-        "study" : {"name": "Triglicéridos", "description": "ES-TR-01", "subsidiary": "TOLUCA MX" , "date" : "01/01/2020", "hour" : "10:00 AM"}
+        "study" : Study.objects.get(pk=1).name,
+        "appointment" : AppointmentRecommendedForm() 
     }
     
     return render(request, "recommendations/recommendations.html", context)
@@ -73,7 +87,7 @@ def appointments(request):
     
     context = {
         "form": form,
-        "appointments" : Appointment.objects.all()
+        "appointments" : Appointment.objects.filter(user_id=request.user.pk)
     }
     
     if request.method == "POST":
@@ -87,7 +101,8 @@ def appointments(request):
             try:
                     
                 Appointment.objects.create(
-                    id = str(bson.ObjectId()), 
+                    id = str(bson.ObjectId()),
+                    user_id = request.user.pk, 
                     place = f"{data['state'].state}, {data['town'].town}",
                     study = data["study"],
                     date = data["date"],
