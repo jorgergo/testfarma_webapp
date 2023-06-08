@@ -21,21 +21,32 @@
     <div class="split left">
       <div class="flex-left">
         <div>
-            <img class="img-checkmark" src="{% static 'assets/images/checkmark.png' %}" alt="checkmark" />
-            <p class="titulo-mid">Tu cuenta se ha</p>
-            <p class="titulo-mid">creado con exito!</p>
+          <img
+            class="img-checkmark"
+            src="{% static 'assets/images/checkmark.png' %}"
+            alt="checkmark"
+          />
+          <p class="titulo-mid">Tu cuenta se ha</p>
+          <p class="titulo-mid">creado con éxito!</p>
         </div>
       </div>
     </div>
     <div class="split right">
-        <form method="POST" class="form-flex">
+      <div class="container last-data-container">
+        <div class="row align-items-center last-data">
+          <form method="POST">
             {% csrf_token %}
-            <p class="titulo-mid">Ahora puedes iniciar sesion con tu correo y contraseña</p>
+            <p class="titulo-mid">
+              Ahora puedes iniciar sesión con tu correo y contraseña
+            </p>
             <div class="btn-sig">
-                <button class="next-btn" type="submit">Ir al inicio de Sesión</button>
+              <button class="next-btn" type="submit">
+                Ir al Inicio de Sesión
+              </button>
             </div>
-        </form>
-      
+          </form>
+        </div>
+      </div>
     </div>
 
     <script>
