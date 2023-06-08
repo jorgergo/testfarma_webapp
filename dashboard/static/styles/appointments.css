@@ -171,9 +171,8 @@ input {
 }
 
 .card-body:hover {
-  background-color: #ed5959;
-  border-color: #ed5959;
-  cursor: pointer;
+  background-color: #facb0c;
+  border-color: #facb0c;
 }
 
 .modal {

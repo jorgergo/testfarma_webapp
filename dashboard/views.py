@@ -10,6 +10,7 @@ import pandas as pd
 from sklearn.mixture import GaussianMixture
 import numpy as np
 import pickle
+import bson
 
 Model_H, Model_M = pickle.load(open("TestFarma_Model_HW.p", "rb"))
 
@@ -71,8 +72,35 @@ def appointments(request):
     form = AppointmentsForm()
     
     context = {
-        "form": form
+        "form": form,
+        "appointments" : Appointment.objects.all()
     }
+    
+    if request.method == "POST":
+        
+        form = AppointmentsForm(request.POST)
+        
+        if form.is_valid():
+            
+            data = form.cleaned_data
+            
+            try:
+                    
+                Appointment.objects.create(
+                    id = str(bson.ObjectId()), 
+                    place = f"{data['state'].state}, {data['town'].town}",
+                    study = data["study"],
+                    date = data["date"],
+                    hour = data["hour"]                
+                )
+                
+                messages.success(request, "Cita creada correctamente")
+                
+            except Exception as e:
+                messages.error(request, "Error al crear la cita")
+                print(e)
+                
+                
     
     return render(request, "appointments/appointments.html", context)
 

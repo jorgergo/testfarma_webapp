@@ -65,7 +65,8 @@
           </div>
           <div class="row studies">
             <form method="POST" id="reg_form" data-towns-url="{% url 'ajax_load_towns' %}">
-              
+              {% csrf_token %}
+
               <div class="mb-3">
                 {{ form.state|as_crispy_field }}
               </div>
@@ -85,11 +86,16 @@
               <div class="mb-3 cs-form">
                 {{ form.hour|as_crispy_field }}
               </div>
-            </form>
+
+            
           </div>
-          <button type="button" id="agendarButton" class="btn btn-left">
-            Agendar
-          </button>
+
+              <button id="agendarButton" class="btn btn-left" onclick="return confirm('Desea Agendar la Cita?')">
+                Agendar
+              </button>
+            
+            </form> 
+          
         </div>
         <div class="col col-md-7 appointments">
           <div class="row">
@@ -97,61 +103,31 @@
           </div>
           <div class="row dates">
             
-            <div class="card cards_container">
-              <div class="card-body" id="card-1" onclick="">
-                <h5 class="card-title">undefined</h5>
-                <p class="card-text">Dirección: undefined</p>
-                <p class="card-text">Fecha: undefined</p><p class="card-text">Hora: undefined</p>
+              <div class="card cards_container">
+
+                {% for appointment in appointments %}
+
+              
+                  <div class ="appointment">
+                    <div class="card-body" id="card-1" onclick="">
+                      <h5 class="card-title">{{ appointment.study.name }}</h5>
+                      <p class="card-text">Sucursal: {{ appointment.place }}</p>
+                      <p class="card-text">Fecha: {{ appointment.date }}</p><p class="card-text">Hora: {{ appointment.hour }}</p>
+                    </div>
+                    
+                    <button class="btn btn-danger" style="margin-bottom: 12px;">Cancelar Cita</button>
+                  </div>
+                
+                {% endfor %}
+
               </div>
-            </div>
-            
+
           </div>
         </div>
       </div>
     </div>
 
     <script>
-      function deleteCard(cardId) {
-        var modal = document.getElementById("appointmentCancelModal");
-        var deleteButton = document.getElementById("modal-delete-button");
-
-        // Update the modal content based on the card body information
-        var card = document.getElementById(cardId);
-        var servicio = card.querySelector(".card-title").textContent;
-        var direccion = card.querySelector(
-          ".card-text:nth-of-type(1)"
-        ).textContent;
-        var fecha = card.querySelector(".card-text:nth-of-type(2)").textContent;
-        var hora = card.querySelector(".card-text:nth-of-type(3)").textContent;
-
-        modal.querySelector(".modal-body p:nth-of-type(1)").textContent =
-          "Servicio: " + servicio;
-
-        modal.querySelector(".modal-body p:nth-of-type(2)").textContent =
-          direccion;
-
-        modal.querySelector(".modal-body p:nth-of-type(3)").textContent = fecha;
-
-        modal.querySelector(".modal-body p:nth-of-type(4)").textContent = hora;
-
-        // Create a new function for deleting the card
-        var deleteCardHandler = function () {
-          card.remove(); // Remove the card element
-
-          // Close the modal and remove the backdrop using jQuery
-          $(modal).modal("hide");
-          $(".modal-backdrop").remove();
-
-          // Remove the event listener from the delete button
-          deleteButton.removeEventListener("click", deleteCardHandler);
-        };
-
-        // Add the event listener to the delete button
-        deleteButton.addEventListener("click", deleteCardHandler);
-
-        // Show the modal using jQuery
-        $(modal).modal("show");
-      }
 
       $("#id_state").change(function () {
         var url = $("#reg_form").attr("data-towns-url");  // get the url of the `load_cities` view
