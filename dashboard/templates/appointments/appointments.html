@@ -115,7 +115,7 @@
                       <p class="card-text">Fecha: {{ appointment.date }}</p><p class="card-text">Hora: {{ appointment.hour }}</p>
                     </div>
                     
-                    <button class="btn btn-danger" style="margin-bottom: 12px;">Cancelar Cita</button>
+                    <button onclick="delete_appointment('{{ appointment.id }}')" class="btn btn-danger" style="margin-bottom: 12px;">Cancelar Cita</button>
                   </div>
                 
                 {% endfor %}
@@ -146,6 +146,13 @@
             }
         });
       });
+
+      function delete_appointment(id_appointment) {
+
+        confirm("¿Estás seguro que deseas eliminar esta cita?");
+        document.location.href = "{% url 'delete_appointment' id_appointment='tmp' %}".replace('tmp', id_appointment);
+
+      }
 
     </script>
   </body>

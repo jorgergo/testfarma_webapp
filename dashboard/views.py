@@ -121,6 +121,18 @@ def profile(request):
     return render(request, "profile/profile.html", context)
 
 
+def appointment_delete(request, id_appointment):
+    
+    try:
+        
+        Appointment.objects.get(id=id_appointment).delete()
+        messages.success(request, "Cita eliminada correctamente")
+        return redirect('appointments')
+
+    except Exception as e:
+        messages.error(request, f"Error al eliminar la cita, {e}")
+
+
 def load_towns(request):
     state_id = request.GET.get("state")
     towns = Town.objects.filter(state_id=state_id).order_by("town")
