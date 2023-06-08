@@ -18,10 +18,13 @@
     <title>Agendar Estudio</title>
   </head>
   <body>
+
+    {% for study_modal in studies %}
+
     <!-- Modal -->
     <div
       class="modal fade"
-      id="exampleModal"
+      id="studyModal-{{ forloop.counter }}"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -30,9 +33,13 @@
         <div class="modal-content">
           <div class="modal-header border-0">
             <h1 class="modal-title fs-5 title" id="exampleModalLabel">
-              ¿Estás seguro de que deseas eliminar este estudio?
+              ¿Deseas Agendar este estudio?
             </h1>
           </div>
+          <div class="modal-body border-0">
+            <p style="text-align: center; margin: 0;">{{ study_modal }}</p>
+          </div>
+          <p style="text-align: center; font-weight: 500;">Serás redirigido a la pagina de citas para confirmar fecha y hora</p>
           <div class="modal-footer border-0">
             <button
               type="button"
@@ -46,13 +53,16 @@
               class="btn modal-right"
               id="modal-delete-button"
             >
-              Eliminar
+              Agendar
             </button>
           </div>
         </div>
       </div>
     </div>
     <!-- Modal -->
+
+    {% endfor %}
+
     <div class="container-fluid appointments h-100 align-items-center">
       <div class="row d-flex justify-content-around">
         <div class="col col-md-4 appointments">
@@ -79,128 +89,36 @@
             <div class="col title"><p>Estudios Recomendados</p></div>
           </div>
 
-          
-
           <div class="row dates">
             <div class="card">
 
-              {% if status == 1 %}
+              {% if studies %}
 
-                <div class="card-body" id="card-1" onclick="deleteCard('card-1')">
-                  <h5 class="card-title">{{ study }}</h5>
-                  <button
-                    type="submit"
-                    class="btn btn-right"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                  >
-                    <i class="bi bi-calendar"></i>
-                    &nbsp;Opciones
-                  </button>
-                  <button
-                    type="submit"
-                    class="btn btn-right small"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                  >
-                    <i class="bi bi-calendar-x"></i>
-                  </button>
-                </div>
+                {% for study in studies %}
+
+                  <div class="card-body" id="card-{{ forloop.counter }}" onclick="deleteCard('card-{{ forloop.counter }}')">
+                    <h5 class="card-title">{{ study }}</h5>
+                    <button
+                      type="submit"
+                      class="btn btn-right"
+                      data-bs-toggle="modal"
+                      data-bs-target="#studyModal-{{ forloop.counter }}"
+                    >
+                      <i class="bi bi-calendar"></i>
+                      &nbsp;Opciones
+                    </button>
+                  </div>
+
+                {% endfor %}
                 
-              {% elif status == 0 %}
+              {% else %}
 
                 <div>
                   <p>No hay estudios recomendados</p>
                 </div>
 
-              {% else %}
-
-                <div>
-                  <p>Ingrese los datos para buscar estudios recomendados</p>
-                </div>
-
               {% endif %}
 
-
-              
-              <!-- <div class="card-body" id="card-2" onclick="deleteCard('card-2')">
-                <h5 class="card-title">Título del Estudio</h5>
-                <p class="card-text">
-                  Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
-                  01210 Ciudad de México, CDMX
-                </p>
-                <p class="card-text">Fecha: 25/05/2023</p>
-                <p class="card-text">Hora: 16:45</p>
-                <button
-                  type="submit"
-                  class="btn btn-right"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
-                  <i class="bi bi-calendar-x"></i>
-                  &nbsp;Cancelar Estudio
-                </button>
-                <button
-                  type="submit"
-                  class="btn btn-right small"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
-                  <i class="bi bi-calendar-x"></i>
-                </button>
-              </div>
-              <div class="card-body" id="card-3" onclick="deleteCard('card-3')">
-                <h5 class="card-title">Título del Estudio</h5>
-                <p class="card-text">
-                  Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
-                  01210 Ciudad de México, CDMX
-                </p>
-                <p class="card-text">Fecha: 25/05/2023</p>
-                <p class="card-text">Hora: 16:45</p>
-                <button
-                  type="submit"
-                  class="btn btn-right"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
-                  <i class="bi bi-calendar-x"></i>
-                  &nbsp;Cancelar Estudio
-                </button>
-                <button
-                  type="submit"
-                  class="btn btn-right small"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
-                  <i class="bi bi-calendar-x"></i>
-                </button>
-              </div>
-              <div class="card-body" id="card-4" onclick="deleteCard('card-4')">
-                <h5 class="card-title">Título del Estudio</h5>
-                <p class="card-text">
-                  Dirección: Avenida Santa Fe 94, Torre A, Piso 8, Zedec Sta Fé,
-                  01210 Ciudad de México, CDMX
-                </p>
-                <p class="card-text">Fecha: 25/05/2023</p>
-                <p class="card-text">Hora: 16:45</p>
-                <button
-                  type="submit"
-                  class="btn btn-right"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
-                  <i class="bi bi-calendar-x"></i>
-                  &nbsp;Cancelar Estudio
-                </button>
-                <button
-                  type="submit"
-                  class="btn btn-right small"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
-                  <i class="bi bi-calendar-x"></i>
-                </button>
-              </div> -->
             </div>
           </div>
         </div>

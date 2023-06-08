@@ -11,6 +11,8 @@ from sklearn.mixture import GaussianMixture
 import numpy as np
 import pickle
 import bson
+from datetime import datetime, date, timedelta
+
 
 Model_H, Model_M = pickle.load(open("TestFarma_Model_HW.p", "rb"))
 
@@ -26,12 +28,11 @@ def home(request):
 def recommendations(request):
     
     form = RecommendationsForm()
-    appointment_form = AppointmentRecommendedForm()
 
     context = {"form": form}
 
     threshold = 0.8
-    message = ""
+    studies = []
     
     if request.method == "POST":
         
@@ -64,18 +65,16 @@ def recommendations(request):
             
             if float(probability) > threshold:
                 
-                print("Se necesita un estudio de triglicéridos")
-                message = 1
+                print("Se necesita un estudio General")
+                studies.append(Study.objects.get(pk=1))
                 
             else :
-                print("Dentro del Rango")       
-                message = 0    
+                print("Dentro del Rango")
+            
             
     context = {
         "form": form,
-        "status": message,
-        "study" : Study.objects.get(pk=1).name,
-        "appointment" : AppointmentRecommendedForm() 
+        "studies" : studies,
     }
     
     return render(request, "recommendations/recommendations.html", context)
@@ -83,7 +82,14 @@ def recommendations(request):
 
 def appointments(request):
     
-    form = AppointmentsForm()
+    if request.session.get("reccomended") is None:
+    
+        form = AppointmentsForm(initial={"study": Study.objects.get(pk=1),
+                                         "date" : date.today() + timedelta(days=1)})
+    
+    else:
+        
+        form = AppointmentsForm(initial={"study": Study.objects.get(request.session.get("recommended"))})
     
     context = {
         "form": form,
