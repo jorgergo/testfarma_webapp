@@ -43,10 +43,10 @@ body {
 }
 
 input {
-  margin-top: 2.5rem;
+  margin-top: 2.0rem;
   margin-bottom: 2.5rem;
-  height: 5rem;
 }
+
 
 .btn {
   font-weight: bold;

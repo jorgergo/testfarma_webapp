@@ -42,17 +42,9 @@ body {
   justify-content: center;
 }
 
-input {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-  height: 5rem;
-}
 
-.form-select {
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-  height: 5rem;
-  font-size: 20px;
+.form-select, input {
+  margin-bottom: 1.5rem;
 }
 
 .btn {

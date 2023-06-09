@@ -11,6 +11,8 @@ from sklearn.mixture import GaussianMixture
 import numpy as np
 import pickle
 import bson
+from datetime import datetime, date, timedelta
+
 
 Model_H, Model_M = pickle.load(open("TestFarma_Model_HW.p", "rb"))
 
@@ -24,12 +26,13 @@ def home(request):
 
 @login_required(login_url="login")
 def recommendations(request):
+    
     form = RecommendationsForm()
 
     context = {"form": form}
 
     threshold = 0.8
-    message = ""
+    studies = []
     
     if request.method == "POST":
         
@@ -44,24 +47,34 @@ def recommendations(request):
             
             variables = np.asarray([weight, height]).reshape(1, -1)
             
-            probability_H = str(np.max(Model_H.predict_proba(variables)))
-            probability_M = str(np.max(Model_M.predict_proba(variables)))
-            
-            print(probability_H)
-        
-            if float(probability_H) > threshold:
+            if request.user.gender == "M":
                 
-                print("Se necesita un estudio de triglicéridos")
-                message = 1
+                print("Mujer")
+                probability = str(np.max(Model_M.predict_proba(variables)))
+            
+            elif request.user.gender == "H":
+                
+                print("Hombre")
+                probability = str(np.max(Model_H.predict_proba(variables)))
+                
+            else:
+                
+                messages.error(request, "Error al obtener el género")
+            
+            print(probability)
+            
+            if float(probability) > threshold:
+                
+                print("Se necesita un estudio General")
+                studies.append(Study.objects.get(pk=1))
                 
             else :
-                print("Dentro del Rango")       
-                message = 0    
+                print("Dentro del Rango")
+            
             
     context = {
         "form": form,
-        "status": message,
-        "study" : {"name": "Triglicéridos", "description": "ES-TR-01", "subsidiary": "TOLUCA MX" , "date" : "01/01/2020", "hour" : "10:00 AM"}
+        "studies" : studies,
     }
     
     return render(request, "recommendations/recommendations.html", context)
@@ -69,11 +82,18 @@ def recommendations(request):
 
 def appointments(request):
     
-    form = AppointmentsForm()
+    if request.session.get("reccomended") is None:
+    
+        form = AppointmentsForm(initial={"study": Study.objects.get(pk=1),
+                                         "date" : date.today() + timedelta(days=1)})
+    
+    else:
+        
+        form = AppointmentsForm(initial={"study": Study.objects.get(request.session.get("recommended"))})
     
     context = {
         "form": form,
-        "appointments" : Appointment.objects.all()
+        "appointments" : Appointment.objects.filter(user_id=request.user.pk)
     }
     
     if request.method == "POST":
@@ -87,7 +107,8 @@ def appointments(request):
             try:
                     
                 Appointment.objects.create(
-                    id = str(bson.ObjectId()), 
+                    id = str(bson.ObjectId()),
+                    user_id = request.user.pk, 
                     place = f"{data['state'].state}, {data['town'].town}",
                     study = data["study"],
                     date = data["date"],

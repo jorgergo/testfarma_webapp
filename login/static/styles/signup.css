@@ -24,16 +24,6 @@
   margin-top: 10%;
 }
 
-.img-paciente {
-  max-width: 50%;
-  padding-top: 0.8rem;
-}
-
-.img-doctor {
-  max-width: 50%;
-  padding-top: 0.8rem;
-}
-
 .right {
   right: 0;
   background-color: #fff9ec;
@@ -60,6 +50,7 @@
   border-width: 5px;
   border: 1px solid #e6e6e6;
   transition: transform 0.3s ease;
+  padding: 0;
 }
 
 .small-light-background:hover {
@@ -86,7 +77,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+  padding: 0;
   border-color: red;
 }
 
@@ -120,17 +111,6 @@
   width: 100%;
 }
 
-.from-flex {
-  display: flex;
-  height: 100%;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-}
-
 .next-btn {
   width: 100%;
   height: 3rem;
@@ -141,6 +121,35 @@ form {
   letter-spacing: 0.1rem;
   border: transparent;
   border-radius: 1rem;
+}
+
+.about-you {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-you-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.right input,
+select {
+  width: 100%;
+  height: 3.5rem;
+  border: 1px solid #e6e6e6;
+  border-radius: 1rem;
+  padding-left: 1rem;
+  font-size: 1.2rem;
 }
 
 .next-btn:hover {
@@ -181,8 +190,29 @@ a {
   color: #d0a700;
 }
 
-.btn-select {
+.paciente {
+  align-self: center;
+}
+
+.doctor {
+  align-self: center;
+}
+
+.btn-check:checked + .btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check) + .btn:active {
+  background-color: #f5e9ce;
+  border-color: #f5e9ce;
+}
+
+.btn.btn-select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  height: 100%;
 }
 
 @media screen and (max-width: 1180px) {
@@ -192,5 +222,20 @@ a {
 
   .register-btn {
     width: 70%;
+  }
+}
+
+@media (max-width: 820px) {
+  .split {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  .left {
+    display: none;
   }
 }
