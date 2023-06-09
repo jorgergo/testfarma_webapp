@@ -12,6 +12,8 @@ from dashboard.models import *
 
 from django.contrib.auth import authenticate
 
+from django.utils.safestring import mark_safe
+
 
 class LoginForm(forms.Form):
     email = forms.EmailField(
@@ -114,6 +116,8 @@ class CacheRegisterForm(forms.Form):
         },
         widget=forms.RadioSelect(),
     )
+    
+    
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

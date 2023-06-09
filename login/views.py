@@ -64,6 +64,9 @@ def register(request):
         print(form.is_valid())
 
         if form.is_valid():
+            
+            print(form.cleaned_data)
+            
             data = json.dumps(form.cleaned_data, default=str)
 
             request.session["register_form_part_two"] = data

@@ -215,6 +215,10 @@ a {
   height: 100%;
 }
 
+.user_type_buttons {
+  display: none;
+}
+
 @media screen and (max-width: 1180px) {
   form {
     width: 70%;
@@ -238,4 +242,13 @@ a {
   .left {
     display: none;
   }
+
+  .user_type_buttons {
+    display: block;
+  }
+
+  .next-btn {
+    margin-bottom: 20px;
+  }
+
 }

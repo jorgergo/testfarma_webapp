@@ -93,7 +93,12 @@
             <div class="form-group">{{ form.town|as_crispy_field }}</div>
 
             <div class="form-group">{{ form.gender|as_crispy_field }}</div>
-
+            
+            <div class = "user_type_buttons">
+              <p>Soy un...</p>
+              
+              {{ form.user_type }}
+            </div>
 
             <div class="btn-sig">
               <button class="next-btn" type="submit">Siguiente</button>
