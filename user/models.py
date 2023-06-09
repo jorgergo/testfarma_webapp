@@ -45,9 +45,10 @@ class User(AbstractUser):
     username = None
     email = models.EmailField(_('email address'), unique=True)
     mom_last_name = models.CharField(max_length=50)
-    birth_date = models.DateField(null=True, blank=True)
-    gender = models.CharField(max_length=1, choices=(('M', 'Masculino'), ('F', 'Femenino')), null=True, blank=True)
-    user_type = models.CharField(max_length=10, choices=(('DoctorT', 'Doctor'), ('UserT', 'Paciente')), null=True, blank=True)    
+    birth_date = models.DateField()
+    gender = models.CharField(max_length=1, choices=(('M', 'Masculino'), ('F', 'Femenino')))
+    state = models.CharField(max_length=35)
+    user_type = models.CharField(max_length=10, choices=(('DoctorT', 'Doctor'), ('UserT', 'Paciente')))    
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     
