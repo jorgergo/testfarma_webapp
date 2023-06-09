@@ -22,36 +22,46 @@
       <div class="container">
         <div class="container light-background">
           <div class="row">
+        <form method="POST" id="reg_form" data-towns-url="{% url 'signup_ajax_load_towns' %}">
+          {% csrf_token %}  
             <div class="col col-md-12 left-title">
               <h1><strong>Soy un...</strong></h1>
             </div>
           </div>
+         
           <div class="row small-light-background" style="margin-top: 15%">
             <div class="left-subtitle">
+            
               <input
                 type="radio"
                 class="btn-check"
-                name="options"
-                id="option1"
+                name="user_type"
+                id="user_type_0"
+                required
+                data-form-type="other"
+                value="DoctorT"
                 autocomplete="off"
               />
-              <label class="btn btn-select" for="option1"
+              <label class="btn btn-select" for="user_type_0"
                 ><h1 class="doctor">Doctor</h1></label
               >
             </div>
           </div>
           <div class="row small-light-background">
+          
             <div class="left-subtitle">
               <input
                 type="radio"
                 class="btn-check"
-                name="options"
-                id="option2"
+                name="user_type"
+                id="user_type_1"
+                required
+                data-form-type="other"
                 autocomplete="off"
+                value="UserT"
               />
-              <label class="btn btn-select" for="option2"
-                ><h1 class="paciente">Paciente</h1></label
-              >
+              <label class="btn btn-select" for="user_type_1"
+                ><h1 class="paciente">Paciente</h1></label>
             </div>
           </div>
         </div>
@@ -59,12 +69,12 @@
     </div>
 
     <div class="split right">
-      <div class="container text-center about-you-container">
+      <orm class="container text-center about-you-container">
         <div class="row align-items-center about-you">
           <p class="tittle-right">Cuéntanos sobre ti</p>
 
-          <form method="POST" class="form-flex">
-            {% csrf_token %}
+          <div class="form-flex">
+
             <div class="form-group">{{ form.name|as_crispy_field }}</div>
 
             <div class="form-group">{{ form.last_name|as_crispy_field }}</div>
@@ -73,16 +83,23 @@
               {{ form.mom_last_name|as_crispy_field }}
             </div>
 
-            <div class="form-group">{{ form.birth_date|as_crispy_field }}</div>
+            <div class="form-group">
+              <label for="id_birth_date" style="text-align: start; margin-left: 5px;">Fecha de Nacimiento</label>
+              {{ form.birth_date|as_crispy_field }}
+            </div>
+
+            <div class="form-group">{{ form.state|as_crispy_field }}</div>
+
+            <div class="form-group">{{ form.town|as_crispy_field }}</div>
 
             <div class="form-group">{{ form.gender|as_crispy_field }}</div>
 
-            <div class="form-group">{{ form.user_type|as_crispy_field }}</div>
 
             <div class="btn-sig">
               <button class="next-btn" type="submit">Siguiente</button>
             </div>
-          </form>
+          </div>
+        </form>
         </div>
       </div>
     </div>
@@ -91,6 +108,28 @@
       function link_to_view() {
         window.location.href = "{% url 'login' %}";
       }
+
+      $("#id_state").change(function () {
+        var url = $("#reg_form").attr("data-towns-url");  // get the url of the `load_cities` view
+        var stateId = $(this).val();  // get the selected country ID from the HTML input
+        console.log(stateId)
+        console.log(url)
+
+        $.ajax({                       // initialize an AJAX request
+            url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+            data: {
+            'state': stateId       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+              $("#id_town").html(data);
+              console.log(data)  // replace the contents of the city input with the data that came from the server
+            },
+            error: function (data) {
+              alert("Por favor selecciona un estado");
+            }
+        });
+      });
+
     </script>
   </body>
 </html>

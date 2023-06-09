@@ -10,6 +10,7 @@ import json
 from .forms import *
 from dashboard.views import *
 from dashboard.urls import *
+from dashboard.models import *
 
 # Create your views here.
 
@@ -116,3 +117,10 @@ def log_out(request):
     messages.info(request, f"Cierre de sesión exitoso")
 
     return redirect("login")
+
+
+def load_towns(request):
+    state_id = request.GET.get("state")
+    towns = Town.objects.filter(state_id=state_id).order_by("town")
+    
+    return render(request, "snippets/signup_town_dropdown_list_options.html", {"towns": towns})

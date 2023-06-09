@@ -48,6 +48,7 @@ class User(AbstractUser):
     birth_date = models.DateField()
     gender = models.CharField(max_length=1, choices=(('M', 'Masculino'), ('F', 'Femenino')))
     state = models.CharField(max_length=35)
+    town = models.CharField(max_length=40)
     user_type = models.CharField(max_length=10, choices=(('DoctorT', 'Doctor'), ('UserT', 'Paciente')))    
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

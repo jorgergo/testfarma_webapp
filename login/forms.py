@@ -8,6 +8,7 @@ from django.contrib.auth.forms import (
 )
 from user.models import User
 from testfarma import settings
+from dashboard.models import *
 
 from django.contrib.auth import authenticate
 
@@ -70,6 +71,30 @@ class CacheRegisterForm(forms.Form):
             }
         ),
     )
+    
+    state = forms.ModelChoiceField( required = True, 
+                                   empty_label="Estado de Residencia",
+                                    label = "",
+                                    queryset = State.objects.all(),
+                                    error_messages={
+                                        "required": "No puede estar vacío",
+                                    },
+                                    widget = forms.Select(attrs = {
+                                        "class": "form-control form-select form-select-lg"
+                                        }
+                                    ))
+    
+    town = forms.ModelChoiceField( required = True, 
+                                    label = "",
+                                    empty_label="Municipio",
+                                    queryset = Town.objects.all(),
+                                    error_messages={
+                                        "required": "No puede estar vacío",
+                                    },
+                                    widget = forms.Select(attrs = {
+                                        "class": "form-control form-select form-select-lg"
+                                        }
+                                    ))
 
     gender = forms.ChoiceField(
         required=True,
@@ -78,19 +103,29 @@ class CacheRegisterForm(forms.Form):
         error_messages={
             "required": "No puede estar vacío",
         },
-        widget=forms.Select(attrs={"class": "form-control"}),
+        widget=forms.Select(attrs={"class": "form-control form-select form-select-lg"}),
     )
 
     user_type = forms.ChoiceField(
         required=True,
-        label="",
-        choices=(("", "Soy un..."), ("DoctorT", "Doctor"), ("UserT", "Paciente")),
+        choices=(("DoctorT", "Doctor"), ("UserT", "Paciente")),
         error_messages={
             "required": "No puede estar vacío",
         },
-        widget=forms.Select(attrs={"class": "form-control"}),
+        widget=forms.RadioSelect(),
     )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["town"].queryset = Town.objects.none()
+
+        if "state" in self.data:
+            try:
+                state = int(self.data.get("state"))
+                self.fields["town"].queryset =  Town.objects.filter(state_id = state)
+            
+            except (ValueError, TypeError):
+                pass
 
 class UserCreationForm(UserCreationForm):
     class Meta:

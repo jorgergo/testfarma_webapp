@@ -9,4 +9,5 @@ urlpatterns = [
     path("register/account", views.register_part_two, name="register_part_two"),
     path("register/success", views.register_part_three, name="register_part_three"),
     path("logout", views.log_out, name="logout"),
+    path("signup/ajax/load-towns/", views.load_towns, name="signup_ajax_load_towns"), # AJAX
 ]
