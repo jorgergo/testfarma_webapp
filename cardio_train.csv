@@ -1,4 +1,4 @@
-id;age;gender;height;weight;ap_hi;ap_lo;cholesterol;gluc;smoke;alco;active;cardio
+_id;age;gender;height;weight;ap_hi;ap_lo;cholesterol;gluc;smoke;alco;active;cardio
 1;20228;1;156;85.0;140;90;3;1;0;0;1;1
 2;18857;1;165;64.0;130;70;3;1;0;0;0;1
 3;17623;2;169;82.0;150;100;1;1;0;0;1;1

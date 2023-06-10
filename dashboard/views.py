@@ -13,9 +13,11 @@ import numpy as np
 import pickle
 import bson
 from datetime import datetime, date, timedelta
+from utils import *
 
 
 Model_H, Model_M = pickle.load(open("TestFarma_Model_HW.p", "rb"))
+db = get_db_handle("testfarma")
 
 # Create your views here.
 
@@ -29,6 +31,8 @@ def home(request):
 def recommendations(request):
     
     form = RecommendationsForm()
+    
+    user_data = db.medic_data.find_one({"_id" : request.user.id})
 
     context = {"form": form}
 
@@ -62,15 +66,27 @@ def recommendations(request):
                 
                 messages.error(request, "Error al obtener el género")
             
-            print(probability)
             
             if float(probability) > threshold:
                 
-                print("Se necesita un estudio General")
-                studies.append(Study.objects.get(pk=1))
+                print("Se necesita un estudio")
+                studies.append(Study.objects.get(pk=3))
                 
-            else :
-                print("Dentro del Rango")
+            if user_data["cholesterol"] >= 2:
+                
+                studies.append(Study.objects.get(pk=7))
+            
+            if user_data["gluc"] >= 2:
+                
+                studies.append(Study.objects.get(pk=8))
+            
+            if user_data["smoke"] == 1:
+                
+                studies.append(Study.objects.get(pk=9))
+                
+            if user_data["alco"] == 1:
+                
+                studies.append(Study.objects.get(pk=10))
             
             
     context = {
