@@ -50,8 +50,16 @@
             </button>
             <button
               type="button"
-              class="btn modal-right"
+              class="btn modal-left"
               id="modal-delete-button"
+            >
+              Borrar
+            </button>
+            <button
+              type="button"
+              class="btn modal-right"
+              data-bs-dismiss="modal"
+              onclick="link_to_appointment('{{ study_modal.code }}', '{{ user.town }}', '{{ user.state}}')"
             >
               Agendar
             </button>
@@ -96,13 +104,14 @@
 
                 {% for study in studies %}
 
-                  <div class="card-body" id="card-{{ forloop.counter }}" onclick="deleteCard('card-{{ forloop.counter }}')">
+                  <div class="card-body" id="card-{{ forloop.counter }}">
                     <h5 class="card-title">{{ study }}</h5>
                     <button
                       type="submit"
                       class="btn btn-right"
                       data-bs-toggle="modal"
                       data-bs-target="#studyModal-{{ forloop.counter }}"
+                      onclick="deleteCard('card-{{ forloop.counter }}', 'studyModal-{{ forloop.counter }}')"
                     >
                       <i class="bi bi-calendar"></i>
                       &nbsp;Opciones
@@ -125,8 +134,8 @@
       </div>
     </div>
     <script>
-      function deleteCard(cardId) {
-        var modal = document.getElementById("exampleModal");
+      function deleteCard(cardId, modalId) {
+        var modal = document.getElementById(modalId);
         var deleteButton = document.getElementById("modal-delete-button");
 
         // Create a new function for deleting the card
@@ -149,6 +158,29 @@
         // Show the modal using jQuery
         $(modal).modal("show");
       }
+
+      function link_to_appointment(code, town, state) {
+      
+        $.ajax({           // initialize an AJAX request
+            url: "{% url 'recommended_appointment' %}", // set the url of the request
+            data: {
+              'code': code,       // add the country id to the GET parameters
+              'state': state,
+              'town': town,
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+              
+              console.log("Data sent")
+              window.location.href = "{% url 'appointments' %}";
+
+            },
+            error: function (data) {
+              alert("An error occurred while sending the data");
+            }
+        });
+      
+      }
+
     </script>
   </body>
 </html>

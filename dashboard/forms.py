@@ -70,7 +70,7 @@ class AppointmentsForm(forms.Form):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["town"].queryset = Town.objects.none()
+        
 
         if "state" in self.data:
             try:

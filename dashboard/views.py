@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
@@ -82,14 +83,21 @@ def recommendations(request):
 
 def appointments(request):
     
-    if request.session.get("reccomended") is None:
+    if request.session.get("recommended") is None:
     
-        form = AppointmentsForm(initial={"study": Study.objects.get(pk=1),
-                                         "date" : date.today() + timedelta(days=1)})
+        form = AppointmentsForm()
     
     else:
         
-        form = AppointmentsForm(initial={"study": Study.objects.get(request.session.get("recommended"))})
+        json_data = json.loads(request.session.get("recommended"))
+        
+        form = AppointmentsForm(initial={
+            
+            "study": Study.objects.get(code = json_data["code"]),
+            "state": State.objects.get(state = json_data["state"]),
+            "town" : Town.objects.get(town = json_data["town"]),
+        
+        })
     
     context = {
         "form": form,
@@ -159,3 +167,15 @@ def load_towns(request):
     towns = Town.objects.filter(state_id=state_id).order_by("town")
     return render(request, "snippets/town_dropdown_list_options.html", {"towns": towns})
 
+
+def recommended_appointment(request):
+    
+    code = request.GET.get("code")
+    state = request.GET.get("state")
+    town = request.GET.get("town")
+    
+    request.session["recommended"] = json.dumps({"code": code, "state": state, "town": town})
+    
+    print("DONE")
+    
+    return HttpResponse(status=200)

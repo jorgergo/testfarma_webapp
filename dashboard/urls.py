@@ -11,4 +11,5 @@ urlpatterns = [
     path("appointments/delete/<str:id_appointment>", views.appointment_delete, name="delete_appointment"),
     
     path("ajax/load-towns/", views.load_towns, name="ajax_load_towns"), # AJAX
+    path("ajax/recommended_appointment/", views.recommended_appointment, name="recommended_appointment"), # AJAX
 ]
