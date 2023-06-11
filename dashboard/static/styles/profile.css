@@ -69,11 +69,13 @@ input[type="text"] {
 
 .container_s {
   display: grid;
-  grid-template-areas: "col1 col1 col3" "col2 col2 col3";
+  grid-template-areas: "col1 col1 col3" 
+                        "col2 col2 col3";
   grid-template-columns: 1fr 1fr 2fr;
-  grid-template-rows: 50vh 50vh;
-  height: 100vh;
-  margin: 0 10px 0 20px;
+  grid-template-rows: 50vh 80%;
+  height: 50vh;
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
 .column {
@@ -93,12 +95,12 @@ input[type="text"] {
 .column1 {
   grid-area: col1;
   margin-right: 10px;
-  border-radius: 10px 0 0 10px;
+  border-radius: 10px;
 }
 
 .column2 {
   grid-area: col2;
-  border-radius: 0;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -107,8 +109,8 @@ input[type="text"] {
 .column3 {
   grid-area: col3;
   margin-left: 10px;
-  margin-right: auto;
-  border-radius: 0 10px 10px 0;
+  margin-right: 10px;
+  border-radius: 10px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -164,7 +166,7 @@ input[type="text"] {
   .column3 {
     margin-left: 0;
     margin-top: 10px;
-    border-radius: 0 0 10px 10px;
+    border-radius: 10px;
     justify-content: center;
     align-items: center;
     padding: 10px;

@@ -1,4 +1,6 @@
+from typing import Any, Dict
 from django import forms
+from django.contrib.auth.forms import PasswordChangeForm, PasswordResetForm
 from .models import *
 
 
@@ -80,4 +82,18 @@ class AppointmentsForm(forms.Form):
             except (ValueError, TypeError):
                 pass
     
+
+class PasswordChange(PasswordChangeForm):
     
+    error_messages = {
+        "password_incorrect": "La contraseña actual es incorrecta",
+        "password_mismatch": "Las contraseñas no coinciden",
+        "old_password": "La contraseña actual es incorrecta",
+    }
+    
+    old_password = forms.CharField(required=True, label="", error_messages={"reqired" : "LA CONTRA NO ES"}, widget=forms.widgets.PasswordInput(attrs={"class": "form-control form-control-lg", "placeholder": "Contraseña Actual"}))
+    
+    new_password1 = forms.CharField(required=True, label="", widget=forms.widgets.PasswordInput(attrs={"class": "form-control form-control-lg", "placeholder": "Nueva Contraseña"}))
+    
+    new_password2 = forms.CharField(required=True, label="", widget=forms.widgets.PasswordInput(attrs={"class": "form-control form-control-lg", "placeholder": "Confirmar Contraseña"}))
+        

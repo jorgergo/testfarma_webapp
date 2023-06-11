@@ -34,7 +34,6 @@ class LoginForm(forms.Form):
         )
     )
 
-
 class CacheRegisterForm(forms.Form):
     name = forms.CharField(
         label="",
@@ -259,3 +258,4 @@ class UserCreationForm(UserCreationForm):
         )
 
         return user
+

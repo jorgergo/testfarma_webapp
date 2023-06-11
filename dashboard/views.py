@@ -152,16 +152,23 @@ def appointments(request):
 
 @login_required(login_url="login")
 def profile(request):
-    user = User.objects.get(pk=request.user.pk)
-
-    if user.gender == "M":
-        user.gender_text = "Masculino"
-    elif user.gender == "F":
-        user.gender_text = "Femenino"
+    
+    if request.method == "POST":
+        
+        form = PasswordChange(data=request.POST, user=request.user)
+        
+        if form.is_valid():
+            
+            messages.success(request, "Contraseña cambiada correctamente")
+            form.save()
+    
     else:
-        user.gender_text = user.gender
-
-    context = {"user": user}
+        
+        form = PasswordChange(user=request.user)
+        
+    context = {
+        "form": form
+    }
 
     return render(request, "profile/profile.html", context)
 
