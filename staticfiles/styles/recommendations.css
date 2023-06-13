@@ -1,0 +1,241 @@
+body {
+  background-color: rgb(250, 203, 12);
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.container-fluid.appointments {
+  background-color: #fff9ec;
+  min-height: 50rem;
+  margin-top: 2rem;
+  padding: 3rem 2rem;
+}
+
+.col.appointments {
+  background-color: #facb0c;
+  padding: 2rem;
+  border-radius: 10px;
+  max-height: 45rem;
+}
+
+.dates {
+  max-height: 38rem;
+  overflow-y: scroll;
+  border-radius: 10px;
+}
+
+.studies {
+  max-height: 33rem;
+  overflow-y: scroll;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+}
+
+.modal-header {
+  align-items: center;
+  justify-content: center;
+}
+
+input {
+  margin-top: 2.0rem;
+  margin-bottom: 2.5rem;
+}
+
+
+.btn {
+  font-weight: bold;
+  display: block;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-style: normal;
+}
+
+.btn-left {
+  background-color: #93d87c;
+  border-color: #93d87c;
+  color: #000;
+  width: 80%;
+  margin: 1rem auto;
+  height: 4rem;
+}
+
+.btn-left:hover {
+  background-color: #69e241;
+  border-color: #69e241;
+  color: #000;
+}
+
+.modal-left {
+  background-color: #ed5959;
+  border-color: #ed5959;
+  width: 40%;
+  margin: 1rem auto;
+  height: 3rem;
+}
+
+.modal-left:hover {
+  background-color: #f92a2a;
+  border-color: #f92a2a;
+  color: #000;
+}
+
+.modal-right {
+  background-color: #93d87c;
+  border-color: #93d87c;
+  width: 40%;
+  margin: 1rem auto;
+  height: 3rem;
+}
+
+.modal-right:hover {
+  background-color: #69e241;
+  border-color: #69e241;
+  color: #000;
+}
+
+.modal-title {
+  font-size: 2rem !important;
+}
+
+.modal-body {
+  background-color: #e8e8e8;
+  border-color: #e8e8e8;
+  border-radius: 10px;
+  margin: 1rem;
+  font-size: 1.5rem !important;
+  font-weight: bold !important;
+  box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.card-text {
+  margin-bottom: 0;
+  font-size: 1.2rem;
+}
+
+.btn-right {
+  background-color: #ed5959;
+  border-color: #ed5959;
+  color: #000;
+  width: 22%;
+  height: 4rem;
+  position: relative;
+  left: 78%;
+  font-size: 1.2rem;
+}
+
+.btn-right.small {
+  display: none;
+}
+
+.btn-right:hover {
+  background-color: #f92a2a;
+  border-color: #f92a2a;
+  color: #000;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-body {
+  background-color: #fff9ec;
+  border-color: #fff9ec;
+  border-radius: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.1);
+}
+
+.modal {
+  border-radius: 10px;
+}
+
+.dates::-webkit-scrollbar {
+  display: none;
+}
+
+.studies::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 2000px) {
+  .container-fluid.appointments {
+    min-height: 73rem;
+  }
+  .col.appointments {
+    margin-top: 10rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-right {
+    display: none;
+  }
+  .btn-right.small {
+    display: block;
+  }
+  .col.appointments {
+    margin-bottom: 1rem;
+  }
+  .studies {
+    max-height: 30rem;
+  }
+  #rec_form {
+    width: 100%;
+  }
+}
+
+/* 1500px */
+@media (max-width: 1487px) {
+  .col.appointments {
+    padding-bottom: 1rem;
+  }
+  .container-fluid.appointments {
+    min-height: 40rem;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    padding-bottom: 2.5rem;
+  }
+  .studies {
+    max-height: 25rem;
+  }
+  .dates {
+    max-height: 30rem;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .card-title {
+    font-size: 1.2rem;
+  }
+  .card-text {
+    font-size: 1rem;
+  }
+  .modal-body {
+    font-size: 1.2rem !important;
+  }
+  .modal-title {
+    font-size: 1.5rem !important;
+  }
+  .btn-right {
+    width: 25%;
+    left: 75%;
+    font-size: 1rem;
+  }
+}

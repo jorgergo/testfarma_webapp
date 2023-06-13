@@ -1,0 +1,1 @@
+web: gunicorn testfarma.wsgi --log-file -
