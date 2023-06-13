@@ -13,11 +13,131 @@
             <meta name="description" content="">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="contact.css">
+
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+                * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Inter', sans-serif;
+                }
+
+                body{
+                    height: 100vh;
+                    background-color: #FFF9EC;
+                    background-size: cover;
+                    background-position: center;
+                }
+
+                .contact-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    background-color: #FFFFFF;
+                    border-radius: 10px;
+                    padding: 20px;
+                    top: 35px;
+                    max-width: 90% ; /* Limita el ancho máximo */
+                    margin: 35px auto 0; /* Centra horizontalmente */
+                    box-sizing: border-box; /* Ajusta el tamaño incluyendo el padding */
+                }
+
+                .contact-text {
+                    text-align: center;
+                    align-self: flex-start; /* Alinea a la izquierda */
+                    margin-right: 10px; /* Espaciado a la derecha */
+                }
+                  
+                .contact-text h2 {
+                    font-size: 24px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+
+                .contact-text2 {
+                    text-align: center;
+                    align-self: flex-start; /* Alinea a la izquierda */
+                    
+                }
+
+                .maps-container{
+                    align-items: center;
+                    align-self: inherit;
+                    margin: auto;
+                }
+                .maps-container .contact-map {
+                    width: 600px;
+                    height: 450px;
+                }
+                  
+                .contact-rectangle {
+                    width: 200px;
+                    height: 10px;
+                    background-color: yellow;
+                    border-radius: 10px;
+                    margin: 10px 10px 10px 10px;
+                }
+
+                /* RESPONSIVE */
+
+                @media (max-width: 992px) {
+                    .contact-container {
+                        padding: 10px;
+                    }
+                    .contact-text h2 {
+                        font-size: 22px;
+                    }
+                    .contact-rectangle {
+                        width: 200px;
+                        height: 6px;
+                    }
+                }
+
+                @media (max-width: 576px) {
+                    .contact-container {
+                        padding: 5px;
+                    }
+                    .contact-text h2 {
+                        font-size: 20px;
+                    }
+                    .contact-rectangle {
+                        width: 170px;
+                        height: 6px;
+                    }
+                }
+
+                @media (max-width: 400px) {
+                    .contact-rectangle {
+                        width: 100px;
+                        height: 6px;
+                    }
+
+                    .maps-container .contact-map {
+                        width: 300px;
+                        height: 250px;
+                    }
+                }
+            </style>
         </head>
         <body>
-            <div>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d11526.249681444266!2d-99.26282005523773!3d19.369019241874522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1stestfarma!5e0!3m2!1ses-419!2smx!4v1686128409433!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            <div class="contact-container">
+                <div class="contact-text">
+                    <h2>Contacto</h2>
+                    <div class="contact-rectangle"></div>
+                </div>
+                <div class="maps-container">
+                    <iframe class="contact-map" src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d11526.249681444266!2d-99.26282005523773!3d19.369019241874522!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1stestfarma!5e0!3m2!1ses-419!2smx!4v1686128409433!5m2!1ses-419!2smx" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="contact-text2">
+                        <p>Testfarma</p>
+                        <p>Samara Tower, Av. Santa Fe No. 94, Mexico City, 01376, Mexico</p>
+                        <p>Samara Tower, Torre A, Piso 8, CDMX, méxico Teléfono: 55 5967 7424</p>
+                    </div>
+                </div>
             </div>
+            
             
         </body>
     </html>
