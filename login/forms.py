@@ -5,6 +5,8 @@ from django.contrib.auth.forms import (
     UserCreationForm,
     UserChangeForm,
     PasswordChangeForm,
+    PasswordResetForm,
+    SetPasswordForm
 )
 from user.models import User
 from testfarma import settings
@@ -259,3 +261,34 @@ class UserCreationForm(UserCreationForm):
 
         return user
 
+class PasswordReset(PasswordResetForm):
+    
+    email = forms.EmailField(
+        widget=forms.widgets.TextInput(
+            attrs={
+                "class": "email-field form-control form-control-lg",
+                "placeholder": "Correo Electrónico",
+            }
+        )
+    )
+    
+    
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+
+        if not User.objects.filter(email=email).exists():
+            raise forms.ValidationError("El correo no existe")
+
+        return email
+
+
+class SetPassword(SetPasswordForm):
+    
+    error_messages = {
+        "password_mismatch": "Las contraseñas no coinciden",
+    }
+    
+    new_password1 = forms.CharField(required=True, label="", widget=forms.widgets.PasswordInput(attrs={"class": "password-field form-control form-control-lg", "placeholder": "Contraseña"}))
+    
+    new_password2 = forms.CharField(required=True, label="", widget=forms.widgets.PasswordInput(attrs={"class": "password-field form-control form-control-lg", "placeholder": "Confirmar Contraseña"}))

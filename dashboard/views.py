@@ -7,12 +7,9 @@ from django.contrib.auth.decorators import login_required
 from .forms import *
 from login.views import *
 from login.urls import *
-import pandas as pd
-from sklearn.mixture import GaussianMixture
 import numpy as np
 import pickle
 import bson
-from datetime import datetime, date, timedelta
 from utils import *
 
 

@@ -6,6 +6,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
+from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordResetView
+from django.contrib.messages.views import SuccessMessageMixin
 import json
 from .forms import *
 from dashboard.views import *
@@ -113,6 +116,16 @@ def register_part_three(request):
 
     return render(request, "signup/signup_part_three.html")
 
+
+class PasswordResetView(auth_views.PasswordResetView):
+    template_name = "login/reset_password.html"
+    email_template_name = "login/password_reset_email.html"
+    subject_template_name = "login/password_reset_subject.txt"
+    success_message = "Se ha enviado un correo electronico para restablecer su contraseña, " \
+                      "Si la cuenta con el correo electronico existe, recibira el correo en breve." \
+                      " Si no recibe el email, " \
+                      "asegurese de haber ingresadp el correo electronico con el que se registró, o revise su bandeja de no deseado."
+    success_url = reverse_lazy("login")
 
 def log_out(request):
     
