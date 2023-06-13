@@ -122,15 +122,6 @@ header {
 }
 
 .dropdown_menu li {
-  padding: 0.7rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dropdown_menu .action_btn {
-  width: 100%;
-  display: flex;
   justify-content: center;
 }
 
@@ -154,17 +145,4 @@ header {
     left: 2rem;
     width: unset;
   }
-}
-
-
-@media (max-width: 431px) {
-  .dropdown_menu {
-    left: 5rem;
-    width: 500%;
-  }
-
-  .logo {
-    width: 90%;
-  }
-  
 }

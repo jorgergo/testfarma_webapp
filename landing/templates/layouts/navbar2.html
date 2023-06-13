@@ -24,18 +24,18 @@
                 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
                 * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: 'Inter', sans-serif;
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    font-family: 'Inter', sans-serif;
                 }
                 
                 body {
-                height: 100vh;
-                background-color: #FFF9EC;
+                    height: 100vh;
+                    background-color: #FFF9EC;
 
-                background-size: cover;
-                background-position: center;
+                    background-size: cover;
+                    background-position: center;
                 }
 
                 li {
@@ -159,44 +159,60 @@
 
                 /* RESPONSIVE */
                 @media (max-width: 992px) {
-                    .navbar .links, .navbar .action_btn {
-                        display: none;
-                    }
+                .navbar .links, .navbar .action_btn {
+                    display: none;
+                }
 
-                    .navbar .toggle_btn {
-                        display: block;
-                    }
+                .navbar .toggle_btn {
+                    display: block;
+                }
 
-                    .dropdown_menu {
-                        display: block;
-                    }
+                .dropdown_menu {
+                    display: block;
+                }
                 }
 
                 @media (max-width: 576px) {
-                    .dropdown_menu {
-                        left: 2rem;
-                        width: unset;
-                    }
+                .dropdown_menu {
+                    left: 2rem;
+                    width: unset;
+                }
                 }
 
+
+                @media (max-width: 431px) {
                 
+
+                .navbar .toggle_btn {
+                    display: block;
+                }
+
+                .dropdown_menu {
+                    display: block;
+                }
+
+                .logo {
+                    width: 90%;
+                }
+                
+                }
             </style>
         </head>
         
         <body>
-            <header style="z-index: 2">
+            <header style="z-index: 9990">
                 <div class="navbar">
                     
-                    <div class="logo image-container"><a href="testfarma"><img src="{% static 'assets/img/logoTest.png' %}"></a></div>
+                    <div class="logo image-container"><a href="http://127.0.0.1:8000/"><img src="{% static 'assets/img/logoTest.png' %}"></a></div>
                     
                     <ul class="links">
-                        <li><a href="testfarma">Inicio</a></li>
+                        <li><a href="http://127.0.0.1:8000/">Inicio</a></li>
                         <li><a href="about_us">¿Quiénes somos?</a></li>
                         <li><a href="services">Servicios</a></li>
                         <li><a href="contact">Contacto</a></li>
                         <li><a href="terms">Términos y condiciones</a></li>
                     </ul>
-                    <a href="{% url 'login' %}" class="action_btn">Ingresar</a>
+                    <a href="login" class="action_btn">Ingresar</a>
 
                     <div class="toggle_btn">
                         <i class="fa-solid fa-bars"></i>
@@ -204,12 +220,12 @@
                 </div>
 
                 <div class="dropdown_menu">
-                    <li><a href="testfarma">Inicio</a></li>
+                    <li><a href="http://127.0.0.1:8000/">Inicio</a></li>
                     <li><a href="about_us">¿Quiénes somos?</a></li>
                     <li><a href="services">Servicios</a></li>
                     <li><a href="contact">Contacto</a></li>
                     <li><a href="terms">Términos y condiciones</a></li>
-                    <li><a href="home" class="action_btn">Ingresar</a></li>
+                    <li><a href="login" class="action_btn">Ingresar</a></li>
                 </div>
             </header>
 
