@@ -117,11 +117,20 @@ header {
   transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.dropdown_menu .open {
-  height: 300px;
+.dropdown_menu.open {
+  height: 270px;
 }
 
 .dropdown_menu li {
+  padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown_menu .action_btn {
+  width: 100%;
+  display: flex;
   justify-content: center;
 }
 
@@ -145,4 +154,15 @@ header {
     left: 2rem;
     width: unset;
   }
+}
+
+@media (max-width: 431px) {
+  .dropdown_menu {
+    left: 5rem;
+  }
+
+  .logo {
+    width: 90%;
+  }
+  
 }
