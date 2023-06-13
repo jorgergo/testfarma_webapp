@@ -5,8 +5,15 @@ from django.shortcuts import render
 def testfarma(request):
     return render(request, "index.html")
 
+def about_us(request):
+    return render(request, "aboutUs.html")
+
 def services(request):
     return render(request, "services.html")
 
-def termsandconditions(request):
+def contact(request):
+    return render(request, "contact.html")
+
+def terms(request):
     return render(request, "termsandconditions.html")
+
