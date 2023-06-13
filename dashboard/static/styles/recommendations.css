@@ -196,6 +196,9 @@ input {
   .studies {
     max-height: 30rem;
   }
+  #rec_form {
+    width: 100%;
+  }
 }
 
 /* 1500px */

@@ -78,7 +78,7 @@
             <div class="col title"><p>Buscar Estudios Recomendados</p></div>
           </div>
           <div class="row studies">
-            <form method="POST">
+            <form method="POST" id="rec_form">
               {% csrf_token %}
               <div class="mb-3">
                 {{ form.height }}
