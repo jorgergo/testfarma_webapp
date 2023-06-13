@@ -1,21 +1,153 @@
 {% include 'layouts/navbar2.html' %}
 
 {% block content %}
-  {% load static %}
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Servicios</title>
-      
-      <link rel="stylesheet" href="{% static 'styles/aboutUs.css' %}" />
-    </head>
-    <body>
-        <main>
+
+    {% load static %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title></title>
+            <meta name="description" content="">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="aboutUs.css">
+
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+                * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Inter', sans-serif;
+                }
+
+                body{
+                    height: 100vh;
+                    background-color: #FFF9EC;
+                    background-size: cover;
+                    background-position: center;
+                }
+
+                .about-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    background-color: #FFFFFF;
+                    border-radius: 10px;
+                    padding: 20px;
+                    top: 35px;
+                    max-width: 90% ; /* Limita el ancho máximo */
+                    margin: 35px auto 0; /* Centra horizontalmente */
+                    box-sizing: border-box; /* Ajusta el tamaño incluyendo el padding */
+                }
+
+                .about-text {
+                    text-align: center;
+                    align-self: flex-start; /* Alinea a la izquierda */
+                    margin-right: 10px; /* Espaciado a la derecha */
+                }
+                  
+                .about-text h2 {
+                    font-size: 24px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+                  
+                .about-rectangle {
+                    width: 200px;
+                    height: 10px;
+                    background-color: yellow;
+                    border-radius: 10px;
+                    margin: 10px 10px 10px 10px;
+                }
+
+                .img-info {
+                    width:400px;
+                    height:400px;
+                }
+
+                /* RESPONSIVE */
+
+                @media (max-width: 992px) {
+                    .about-container {
+                        padding: 10px;
+                    }
+                    .about-text h2 {
+                        font-size: 22px;
+                    }
+                    .about-rectangle {
+                        width: 200px;
+                        height: 6px;
+                    }
+                }
+
+                @media (max-width: 576px) {
+                    .about-container {
+                        padding: 5px;
+                    }
+                    .about-text h2 {
+                        font-size: 20px;
+                    }
+                    .about-rectangle {
+                        width: 170px;
+                        height: 6px;
+                    }
+                }
+
+                @media (max-width: 400px) {
+                    .about-rectangle {
+                        width: 100px;
+                        height: 6px;
+                    }
+                    .mobile .mobile-errase{
+                        display:none;
+                    }
+                }
+
+            </style>
+        </head>
+        <body>
+
+            <div class="about-container">
+                <div class="about-text">
+                    <h2>¿Quiénes Somos</h2>
+                    <div class="about-rectangle"></div>
+                </div>
+                <div class="about-info">
+                    <div class="mobile">
+                        <div class="container text-center">
+                            <div class="row" style="text-align: justify">
+                                <div class="col">
+                                    <p>{% lorem 120 w random %}</p>
+                                </div>
+                                <div class="col mobile-errase">
+                                    <figure class="figure">
+                                        <img class="figure-img img-fluid rounded" src="https://cdn.euroinnova.edu.es/img/subidasEditor/medicina02-1659630380.webp" class="rounded float-start" alt="...">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container text-center">
+                            <div class="row" style="text-align: justify">
+                                <div class="col mobile-errase">
+                                    <figure class="figure">
+                                        <img class="figure-img img-fluid rounded"src="https://images.ecestaticos.com/Bosqgwi-bRoiiu2s89AjrlamxUE=/0x70:1716x1040/1338x751/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F8db%2F8b6%2Faa5%2F8db8b6aa54b585253e15f79a68447aeb.jpg" class="rounded float-start" alt="...">
+                                    </figure>
+                                </div>
+                                <div class="col">
+                                    <p>{% lorem 120 w random %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-        </main>
-    </body>
-  </html>
+            
+        </body>
+    </html>
+
 {% endblock %}
