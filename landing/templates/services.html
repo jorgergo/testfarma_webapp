@@ -11,46 +11,151 @@
       <title>Servicios</title>
       
       <link rel="stylesheet" href="{% static 'styles/services.css' %}" />
+
+      <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background-color: #FFF9EC;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            padding: 20px;
+            top: 35px;
+            max-width: 90% ; /* Limita el ancho máximo */
+            margin: 35px auto 0; /* Centra horizontalmente */
+            box-sizing: border-box; /* Ajusta el tamaño incluyendo el padding */
+        }
+                          
+        .service-text {
+            text-align: center;
+            align-self: flex-start; /* Alinea a la izquierda */
+            margin-right: 10px; /* Espaciado a la derecha */
+        }
+                          
+        .service-text h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+                          
+        .service-rectangle {
+            width: 200px;
+            height: 10px;
+            background-color: yellow;
+            border-radius: 10px;
+            margin: 10px 10px 10px 10px;
+        }
+
+        .boxes-rectangle {
+            display: block;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid yellow;
+            background-color: transparent;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .boxes-rectangle h3 {
+            margin: 0;
+        }
+          
+        .boxes-rectangle i {
+            font-size: 2rem;
+            color: darkgray;
+        }
+
+      </style>
+
     </head>
     <body>
         <main>
-            <script src="https://kit.fontawesome.com/a74fb2b9e7.js" crossorigin="anonymous"></script>
-            <div class="background">
-                <!-- <br> temporales en lo que esta el header -->
-                <br>
-                <div class="round_container">
-                    <div class="title1" style="padding-left: 30px; padding-top: 20px;">Servicios</div>
-                    <hr class="hr_yellow" style="margin-left: 32px; margin-top: 8px;">
-                    <button>
-                        <div class="title2" style="grid-column: 1;"> Check Ups </div>
-                        <div style="grid-column: 2;">
-                            <i class="fa-solid fa-circle-chevron-right" style="color:darkgray; 
-                            padding-left: 274px; font-size: 2.4em; padding-top: 4px;"></i>
+
+            <div class="service-container">
+
+                <div class="service-text">
+                    <h2>Servicios</h2>
+                    <div class="service-rectangle"></div>
+                </div>
+
+                <div class="">
+
+                    <button class="boxes-rectangle">
+                        <div class="container text-center">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3>Check Ups</h3>
+                                </div>
+                                <div class="col">
+                                    <i class="fa-solid fa-circle-chevron-right" style="color:darkgray; font-size: 2rem; "></i>
+                                </div>
+                            </div>
                         </div>
-                    </button>  
-                    <button>
-                        <div class="title2" style="grid-column: 1;"> Análisis Clínicos </div>
-                        <div style="grid-column: 2;">
-                            <i class="fa-solid fa-circle-chevron-right" style="color:darkgray; 
-                            padding-left: 274px; font-size: 2.4em; padding-top: 4px;"></i>
+                    </button>
+
+                    <button class="boxes-rectangle">
+                        <div class="container text-center">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3>Análisis Clínicos</h3>
+                                </div>
+                                <div class="col">
+                                    <i class="fa-solid fa-circle-chevron-right" style="color:darkgray; font-size: 2rem; "></i>
+                                </div>
+                            </div>
                         </div>
-                    </button> 
-                    <button>
-                        <div class="title2" style="grid-column: 1;"> Tomografías y Resonancias </div>
-                        <div style="grid-column: 2;">
-                            <i class="fa-solid fa-circle-chevron-right" style="color:darkgray; 
-                            padding-left: 274px; font-size: 2.4em; padding-top: 4px;"></i>
+                    </button>
+
+                    <button class="boxes-rectangle">
+                        <div class="container text-center">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3>Tomografías y Resonancias</h3>
+                                </div>
+                                <div class="col">
+                                    <i class="fa-solid fa-circle-chevron-right" style="color:darkgray; font-size: 2rem; "></i>
+                                </div>
+                            </div>
                         </div>
-                    </button>   
-                    <button>
-                        <div class="title2" style="grid-column: 1;"> Pruebas COVID-19 </div>
-                        <div style="grid-column: 2;">
-                            <i class="fa-solid fa-circle-chevron-right" style="color:darkgray; 
-                            padding-left: 274px; font-size: 2.4em; padding-top: 4px;"></i>
+                    </button>
+
+                    <button class="boxes-rectangle">
+                        <div class="container text-center">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3>Pruebas COVID-19</h3>
+                                </div>
+                                <div class="col">
+                                    <i class="fa-solid fa-circle-chevron-right" style="color:darkgray; font-size: 2rem; "></i>
+                                </div>
+                            </div>
                         </div>
-                    </button>  
+                    </button>
                 </div>
             </div>
+
+
+
+            <script src="https://kit.fontawesome.com/a74fb2b9e7.js" crossorigin="anonymous"></script>
+            
         </main>
     </body>
   </html>
