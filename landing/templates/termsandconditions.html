@@ -10,22 +10,80 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Servicios</title>
       
-      <link rel="stylesheet" href="{% static 'styles/services.css' %}" />
+      <link rel="stylesheet" href="{% static 'styles/terms.css' %}" />
+
+      <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background-color: #FFF9EC;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .terms-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            padding: 20px;
+            top: 35px;
+            max-width: 90% ; /* Limita el ancho máximo */
+            margin: 35px auto 0; /* Centra horizontalmente */
+            box-sizing: border-box; /* Ajusta el tamaño incluyendo el padding */
+        }
+                          
+        .terms-text {
+            text-align: center;
+            align-self: flex-start; /* Alinea a la izquierda */
+            margin-right: 10px; /* Espaciado a la derecha */
+        }
+                          
+        .terms-text h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+                          
+        .terms-rectangle {
+            width: 200px;
+            height: 10px;
+            background-color: yellow;
+            border-radius: 10px;
+            margin: 10px 10px 10px 10px;
+        }
+
+      </style>
     </head>
     <body>
         <main>
-            <script src="https://kit.fontawesome.com/a74fb2b9e7.js" crossorigin="anonymous"></script>
-            <div class="background">
-                <div class="round_container">
-                    <div class="title1" style="padding-left: 30px; padding-top: 20px;">Términos y Condiciones</div>
-                    <hr class="hr_yellow" style="margin-left: 46px; margin-top: 8px; width: 30%;">
-                    <div class="text1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus purus in massa tempor. Ipsum dolor sit amet consectetur adipiscing elit.
-                         Malesuada proin libero nunc consequat interdum varius. Vitae turpis massa sed elementum tempus. <br><br>Sagittis purus sit amet volutpat consequat mauris nunc congue. Ut morbi tincidunt augue interdum velit euismod in. Ipsum dolor sit amet consectetur. Eu non diam phasellus vestibulum lorem sed risus ultricies.
-                         Molestie ac feugiat sed lectus vestibulum mattis. <br>Esque eu tincidunt tortor. Ornare massa eget egestas purus viverra accumsan in nisl nisi. Ut eu sem integer vitae justo eget magna fermentum iaculis. Elit at imperdiet dui accumsan. Vulputate sapien nec sagittis aliquam malesuada bibendum arcu.      
-                    </div> 
-                </div>
+
+          <div class="terms-container">
+
+            <div class="terms-text">
+              <h2>Terminos y condiciones</h2>
+              <div class="terms-rectangle"></div>
             </div>
+
+            <div>
+              <p class="text-sm-start">{% lorem 200 w %}</p>
+            </div>
+
+          </div>
+
         </main>
+
+        <script src="https://kit.fontawesome.com/a74fb2b9e7.js" crossorigin="anonymous"></script>
     </body>
   </html>
 {% endblock %}

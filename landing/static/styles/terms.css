@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: #FFF9EC;
+    background-size: cover;
+    background-position: center;
+}
+
+.promos-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 20px;
+    top: 35px;
+    max-width: 90% ; /* Limita el ancho máximo */
+    margin: 35px auto 0; /* Centra horizontalmente */
+    box-sizing: border-box; /* Ajusta el tamaño incluyendo el padding */
+}
+                  
+.promos-text {
+    text-align: center;
+    align-self: flex-start; /* Alinea a la izquierda */
+    margin-right: 10px; /* Espaciado a la derecha */
+}
+                  
+.promos-text h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+                  
+.promos-rectangle {
+    width: 200px;
+    height: 10px;
+    background-color: yellow;
+    border-radius: 10px;
+    margin: 10px 10px 10px 10px;
+}
